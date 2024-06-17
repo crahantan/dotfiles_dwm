@@ -6,12 +6,12 @@ exec /usr/bin/setxkbmap latam &
 #xrandr
 intern=eDP1
 extern=HDMI-0
-extern_vga=DP-1
+extern_lg=DP-1
 
 if xrandr | grep "$extern disconnected"; then
-	xrandr --output "$extern" --off --output "$extern_vga" --off --output "$intern" --auto
+	xrandr --output "$extern" --off --output "$extern_lg" --off --output "$intern" --auto
 else
-	xrandr --output "$intern" --off --output "$extern" --mode 1920x1080 --rate 60 --output "$extern_vga" --auto --right-of "$extern"
+	xrandr --output "$intern" --off --output "$extern" --mode 1920x1080 --rate 60 --output "$extern_lg" --mode 1920x1080 --rate 60 --right-of "$extern"
 fi
 
 #feh
