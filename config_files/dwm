@@ -3,6 +3,9 @@
 #kb
 exec /usr/bin/setxkbmap latam &
 
+#timezone
+exec timedatectl set-timezone America/Mexico_City &
+
 #xrandr
 intern=eDP1
 extern=HDMI-0
@@ -39,9 +42,6 @@ exec /usr/lib/xfce-polkit/xfce-polkit &
 
 #xrdb Xresources
 exec xrdb -merge /home/crahantan/.Xresources &
-
-#timezone
-exec sudo timedatectl set-timezone America/Mexico_City &
 
 #dwm
 #exec dbus-launch --sh-syntax --exit-with-session dwm
