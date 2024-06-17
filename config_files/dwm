@@ -1,21 +1,10 @@
-#!/bin/bash
+#!/usr/bin/zsh
 
 #kb
 exec /usr/bin/setxkbmap latam &
 
 #timezone
 exec timedatectl set-timezone America/Mexico_City &
-
-#xrandr
-intern=eDP1
-extern=HDMI-0
-extern_lg=DP-1
-
-if xrandr | grep "$extern disconnected"; then
-	xrandr --output "$extern" --off --output "$extern_lg" --off --output "$intern" --auto
-else
-	xrandr --output "$intern" --off --output "$extern" --mode 1920x1080 --rate 60 --output "$extern_lg" --mode 1920x1080 --rate 60 --right-of "$extern"
-fi
 
 #wal
 wal -R &
@@ -43,6 +32,16 @@ exec /usr/lib/xfce-polkit/xfce-polkit &
 #xrdb Xresources
 exec xrdb -merge /home/crahantan/.Xresources &
 
+#xrandr
+intern=eDP1
+extern=HDMI-0
+extern_lg=DP-1
+
+if xrandr | grep "$extern disconnected"; then
+	xrandr --output "$extern" --off --output "$extern_lg" --off --output "$intern" --auto
+else
+	xrandr --output "$intern" --off --output "$extern" --mode 1920x1080 --rate 60 --output "$extern_lg" --mode 1920x1080 --rate 60 --right-of "$extern"
+fi
+
 #dwm
-#exec dbus-launch --sh-syntax --exit-with-session dwm
 exec dwm
