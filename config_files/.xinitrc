@@ -1,0 +1,56 @@
+#!/bin/bash
+
+#kb
+exec /usr/bin/setxkbmap latam &
+
+#xrandr
+intern=eDP1
+extern=HDMI-0
+extern_vga=DP-1
+
+if xrandr | grep "$extern disconnected"; then
+    xrandr --output "$extern" --off --output "$extern_vga" --off --output "$intern" --auto
+else
+    xrandr --output "$intern" --off --output "$extern" --mode 1920x1080 --rate 60 --output "$extern_vga" --auto --right-of "$extern"
+fi
+
+#feh
+#exec /home/crahantan/.fehbg & 
+#nitrogen
+#exec nitrogen --restore &
+wal -R &
+
+#picom
+#exec picom --config /home/crahantan/.config/picom/picom.conf &
+
+#xcompmgr
+exec xcompmgr &
+
+#xautolock
+exec xautolock -time 60 -locker slock &
+
+#slstatus
+exec slstatus &
+
+#PATHS
+export JAVA_HOME="/usr/lib/jvm/java-22-jdk"
+export PATH=$HOME/.local/bin:$HOME/.dwm/scripts:$JAVA_HOME/bin:$PATH
+export QT_QPA_PLATFORMTHEME=qt5ct
+
+###XFCE4 powerand polkit
+#xfce-power-manager
+exec /usr/bin/xfce4-power-manager &
+#polkit-lxqt
+exec /usr/lib/xfce-polkit/xfce-polkit &
+
+#xrdb Xresources
+exec xrdb -merge /home/crahantan/.Xresources &
+
+#wmname 
+exec /usr/bin/wmname LG3D &
+
+#dwm
+#exec dbus-launch --sh-syntax --exit-with-session dwm
+exec dwm
+
+
