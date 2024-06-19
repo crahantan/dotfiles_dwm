@@ -12,4 +12,5 @@ static const char *colorname[NUMCOLS] = {
 static const int failonclear = 1;
 
 /* Background image path, should be available to the user above */
-static const char *background_image = "~/Imágenes/wallpapers/1075446.png";
+static const char *background_image =
+    "/home/crahantan/Imágenes/wallpapers/1075446.jpg";
