@@ -9,13 +9,13 @@ extern=HDMI-0
 extern_vga=DP-1
 
 if xrandr | grep "$extern disconnected"; then
-    xrandr --output "$extern" --off --output "$extern_vga" --off --output "$intern" --auto
+	xrandr --output "$extern" --off --output "$extern_vga" --off --output "$intern" --auto
 else
-    xrandr --output "$intern" --off --output "$extern" --mode 1920x1080 --rate 60 --output "$extern_vga" --auto --right-of "$extern"
+	xrandr --output "$intern" --off --output "$extern" --mode 1920x1080 --rate 60 --output "$extern_vga" --auto --right-of "$extern"
 fi
 
 #feh
-#exec /home/crahantan/.fehbg & 
+#exec /home/crahantan/.fehbg &
 #nitrogen
 #exec nitrogen --restore &
 wal -R &
@@ -46,11 +46,6 @@ exec /usr/lib/xfce-polkit/xfce-polkit &
 #xrdb Xresources
 exec xrdb -merge /home/crahantan/.Xresources &
 
-#wmname 
-exec /usr/bin/wmname LG3D &
-
 #dwm
 #exec dbus-launch --sh-syntax --exit-with-session dwm
 exec dwm
-
-
