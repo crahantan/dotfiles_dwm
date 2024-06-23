@@ -14,14 +14,8 @@ else
 	xrandr --output "$intern" --off --output "$extern" --mode 1920x1080 --rate 60 --output "$extern_lg" --mode 1920x1080 --rate 60 --right-of "$extern"
 fi
 
-#feh
-#exec /home/crahantan/.fehbg &
-#nitrogen
-#exec nitrogen --restore &
+#wal
 wal -R &
-
-#picom
-#exec picom --config /home/crahantan/.config/picom/picom.conf &
 
 #xcompmgr
 exec xcompmgr &
@@ -37,14 +31,17 @@ export JAVA_HOME="/usr/lib/jvm/java-22-jdk"
 export PATH=$HOME/.local/bin:$HOME/.dwm/scripts:$JAVA_HOME/bin:$PATH
 export QT_QPA_PLATFORMTHEME=qt5ct
 
-###XFCE4 powerand polkit
 #xfce-power-manager
 exec /usr/bin/xfce4-power-manager &
-#polkit-lxqt
+
+#xfce-polkit
 exec /usr/lib/xfce-polkit/xfce-polkit &
 
 #xrdb Xresources
 exec xrdb -merge /home/crahantan/.Xresources &
+
+#timezone
+exec sudo timedatectl set-timezone America/Mexico_City &
 
 #dwm
 #exec dbus-launch --sh-syntax --exit-with-session dwm
