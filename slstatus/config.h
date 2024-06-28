@@ -76,6 +76,6 @@ static const struct arg args[] = {
     {datetime, "%s", "   %F   󰥔 %T  "},
 
     // batery
-    //{battery_perc, "  󱊣 %s%%", "BAT0"},
+    {battery_perc, "  󱊣 %s%%", "BAT0"},
 
 };
