@@ -21,7 +21,7 @@ exec slstatus &
 #PATHS
 export JAVA_HOME="/usr/lib/jvm/java-22-jdk"
 export PATH=$HOME/.local/bin:$HOME/.dwm/scripts:$JAVA_HOME/bin:$PATH
-export QT_QPA_PLATFORMTHEME=qt5ct
+export QT_QPA_PLATFORMTHEME=qt6ct
 
 #xfce-power-manager
 exec /usr/bin/xfce4-power-manager &
