@@ -91,6 +91,7 @@ static const char *volumeUnMute[] = {"pamixer", "-u", NULL};
 
 static const Key keys[] = {
     /* modifier                     key        function        argument */
+    {MODKEY | ShiftMask, XK_f, togglefullscr, {0}},
     {MODKEY, XK_d, spawn, {.v = rofi}},
     {MODKEY, XK_Return, spawn, {.v = termcmd}},
     {MODKEY, XK_t, togglebar, {0}},
