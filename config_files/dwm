@@ -1,7 +1,7 @@
 #!/usr/bin/zsh
 
 #kb
-exec /usr/bin/setxkbmap latam &
+#exec sudo cp ./xorg/00-keyboard.conf /etc/X11/xorg.conf.d/ &
 
 #timezone
 exec timedatectl set-timezone America/Mexico_City &
