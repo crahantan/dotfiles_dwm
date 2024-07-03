@@ -80,7 +80,7 @@ static const char *rofi[] = {"rofi",
                              "Brisa",
                              "-show-icons",
                              NULL};
-static const char *termcmd[] = {"alacritty", NULL};
+static const char *termcmd[] = {"kitty", NULL};
 static const char *volumeUp[] = {"pamixer", "-i", "5", NULL};
 static const char *volumeDown[] = {"pamixer", "-d", "5", NULL};
 static const char *volumeMute[] = {"pamixer", "-m", NULL};
