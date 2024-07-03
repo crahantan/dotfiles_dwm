@@ -32,6 +32,9 @@ exec /usr/lib/xfce-polkit/xfce-polkit &
 #xrdb Xresources
 exec xrdb -merge /home/crahantan/.Xresources &
 
+#LG3D
+exec wmname LG3D &
+
 #xrandr
 intern=eDP1
 extern=HDMI-0
