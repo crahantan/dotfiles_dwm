@@ -17,13 +17,13 @@ static const int systraypinningfailfirst =
 static const int showsystray = 1; /* 0 means no systray */
 static const int showbar = 1;     /* 0 means no bar */
 static const int topbar = 1;      /* 0 means bottom bar */
-static const char *fonts[] = {"JetBrainsMono Nerd Font:size=12"};
-static const char dmenufont[] = "JetBrainsMono Nerd Font:size=12";
+static const char *fonts[] = {"JetBrainsMono Nerd Font SemiBold:size=12"};
+static const char dmenufont[] = "JetBrainsMono Nerd Font SemiBold:size=12";
 #include "/home/crahantan/.cache/wal/colors-wal-dwm.h"
 
 /* tagging */
-static const char *tags[] = {"", "", "", "", "",
-                             "", "", "", ""};
+static const char *tags[] = {"󱑷", "󱑷", "󱑷", "󱑷", "󱑷",
+                             "󱑷", "󱑷", "󱑷", "󱑷"};
 
 static const Rule rules[] = {
     /* xprop(1):
@@ -70,12 +70,16 @@ static char dmenumon[2] =
     "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = {"dmenu_run", "-m", dmenumon, "-fn", NULL};
 static const char *rofi[] = {
-    "/home/crahantan/.config/rofi/launchers/type-6/launcher.sh", NULL};
+    "/home/crahantan/.config/dwm/rofi/rofi/launchers/type-2/launcher.sh", NULL};
 static const char *termcmd[] = {"kitty", NULL};
 static const char *volumeUp[] = {"pamixer", "-i", "5", NULL};
 static const char *volumeDown[] = {"pamixer", "-d", "5", NULL};
 static const char *volumeMute[] = {"pamixer", "-m", NULL};
 static const char *volumeUnMute[] = {"pamixer", "-u", NULL};
+static const char *restartDwm[] = {"restartdwm", NULL};
+static const char *powermenu[] = {
+    "/home/crahantan/.config/dwm/rofi/rofi/powermenu/type-2/powermenu.sh",
+    NULL};
 
 #include "../patches/pdwm/shifttag.c"
 #include "../patches/pdwm/shiftview.c"
@@ -85,6 +89,8 @@ static const Key keys[] = {
     {MODKEY | ShiftMask, XK_f, togglefullscr, {0}},
     {MODKEY, XK_d, spawn, {.v = rofi}},
     {MODKEY, XK_Return, spawn, {.v = termcmd}},
+    {MODKEY | ShiftMask, XK_e, spawn, {.v = restartDwm}},
+    {MODKEY, XK_Escape, spawn, {.v = powermenu}},
     {MODKEY, XK_t, togglebar, {0}},
     {MODKEY, XK_j, focusstack, {.i = +1}},
     {MODKEY, XK_k, focusstack, {.i = -1}},
@@ -107,7 +113,7 @@ static const Key keys[] = {
     {MODKEY | ShiftMask, XK_comma, tagmon, {.i = -1}},
     {MODKEY | ShiftMask, XK_period, tagmon, {.i = +1}},
     {MODKEY, XK_minus, setgaps, {.i = -1}},
-    {MODKEY, XK_equal, setgaps, {.i = +1}},
+    {MODKEY, XK_plus, setgaps, {.i = +1}},
     {MODKEY | ShiftMask, XK_equal, setgaps, {.i = 0}},
     TAGKEYS(XK_1, 0) TAGKEYS(XK_2, 1) TAGKEYS(XK_3, 2) TAGKEYS(XK_4, 3)
         TAGKEYS(XK_5, 4) TAGKEYS(XK_6, 5) TAGKEYS(XK_7, 6) TAGKEYS(XK_8, 7)

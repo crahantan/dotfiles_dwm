@@ -70,7 +70,7 @@ static char dmenumon[2] =
     "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = {"dmenu_run", "-m", dmenumon, "-fn", NULL};
 static const char *rofi[] = {
-    "/home/crahantan/.config/dwm/rofi/rofi/launchers/type-2/launcher.sh", NULL};
+    "/home/crahantan/.config/dwm/rofi/rofi/launchers/type-4/launcher.sh", NULL};
 static const char *termcmd[] = {"kitty", NULL};
 static const char *volumeUp[] = {"pamixer", "-i", "5", NULL};
 static const char *volumeDown[] = {"pamixer", "-d", "5", NULL};
@@ -78,7 +78,7 @@ static const char *volumeMute[] = {"pamixer", "-m", NULL};
 static const char *volumeUnMute[] = {"pamixer", "-u", NULL};
 static const char *restartDwm[] = {"restartdwm", NULL};
 static const char *powermenu[] = {
-    "/home/crahantan/.config/dwm/rofi/rofi/powermenu/type-2/powermenu.sh",
+    "/home/crahantan/.config/dwm/rofi/rofi/powermenu/type-5/powermenu.sh",
     NULL};
 
 #include "../patches/pdwm/shifttag.c"
