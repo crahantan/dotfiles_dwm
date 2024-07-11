@@ -1,13 +1,9 @@
 #!/bin/sh
 
-#kb
-#exec sudo cp ./xorg/00-keyboard.conf /etc/X11/xorg.conf.d/ &
+userresources=$HOME/.Xresources
 
 #timezone
 exec timedatectl set-timezone America/Mexico_City &
-
-#wal
-wal -R &
 
 #xcompmgr
 exec xcompmgr &
@@ -18,10 +14,16 @@ exec xautolock -time 60 -locker slock &
 #slstatus
 exec slstatus &
 
-#PATHS
+#PATHS && exports
 export JAVA_HOME="/usr/lib/jvm/java-22-jdk"
 export PATH=$HOME/.local/bin:$HOME/.local/bin/scripts:$JAVA_HOME/bin:$PATH
-export QT_QPA_PLATFORMTHEME=qt6ct
+export QT_QPA_PLATFORMTHEME=gtk2
+#java-dwm
+export _JAVA_AWT_WM_NONREPARENTING=1
+export AWT_TOOLKIT=MToolkit
+
+#wal
+exec $HOME/.local/bin/wal -R &
 
 #xfce-power-manager
 exec /usr/bin/xfce4-power-manager &
@@ -30,7 +32,7 @@ exec /usr/bin/xfce4-power-manager &
 exec /usr/lib/xfce-polkit/xfce-polkit &
 
 #xrdb Xresources
-exec xrdb -merge /home/crahantan/.Xresources &
+exec xrdb -merge $HOME/.Xresources &
 
 #xrandr
 intern=eDP1
