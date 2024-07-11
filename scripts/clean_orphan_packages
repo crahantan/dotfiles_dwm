@@ -1,0 +1,3 @@
+#!/bin/bash
+
+exec sudo pacman -Qdtq | sudo pacman -Rns -

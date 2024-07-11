@@ -1,0 +1,11 @@
+#!/bin/bash
+
+#pacman_update function
+update_pacman(){
+  exec sudo pacman -Syyu --noconfirm
+}
+
+update_pacman
+
+
+

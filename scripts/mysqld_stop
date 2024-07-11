@@ -1,0 +1,4 @@
+#!/bin/bash
+
+exec sudo systemctl stop mysqld.service
+

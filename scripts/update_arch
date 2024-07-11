@@ -1,0 +1,4 @@
+#!/bin/bash
+
+exec alacritty -e bash $HOME/.local/bin/scripts/updates/update_pacman &
+exec alacritty -e bash $HOME/.local/bin/scripts/updates/update_yay &
