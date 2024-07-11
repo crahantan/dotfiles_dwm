@@ -22,8 +22,8 @@ static const char dmenufont[] = "FontAwesome Bold:size=14";
 #include "/home/crahantan/.cache/wal/colors-wal-dwm.h"
 
 /* tagging */
-static const char *tags[] = {"", "", "", "", "",
-                             "", "", "", ""};
+static const char *tags[] = {"", "", "", "", "",
+                             "", "", "", ""};
 
 static const Rule rules[] = {
     /* xprop(1):
