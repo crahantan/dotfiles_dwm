@@ -1,8 +1,9 @@
 /* See LICENSE file for copyright and license details. */
 #include <X11/XF86keysym.h>
+#include <stddef.h>
 
 /* appearance */
-static const unsigned int borderpx = 2; /* border pixel of windows */
+static const unsigned int borderpx = 5; /* border pixel of windows */
 static const unsigned int gappx = 10;   /* gaps between windows */
 static const unsigned int snap = 32;    /* snap pixel */
 static const unsigned int systraypinning =
@@ -14,12 +15,25 @@ static const unsigned int systrayspacing = 2; /* systray spacing */
 static const int systraypinningfailfirst =
     1; /* 1: if pinning fails, display systray on the first monitor, False:
           display systray on the last monitor*/
-static const int showsystray = 1; /* 0 means no systray */
-static const int showbar = 1;     /* 0 means no bar */
-static const int topbar = 1;      /* 0 means bottom bar */
+static const int showsystray = 1;       /* 0 means no systray */
+static const int showbar = 1;           /* 0 means no bar */
+static const int topbar = 1;            /* 0 means bottom bar */
+static const int splitstatus = 1;       /* 1 for split status items */
+static const char *splitdelim = ";";    /* Character used for separating status
+                                         */
+static const unsigned int stairpx = 20; /* depth of the stairs layout */
+static const int stairdirection = 1;    /* 0: left-aligned, 1: right-aligned */
+static const int stairsamesize =
+    1; /* 1 means shrink all the staired windows to the same size */
 static const char *fonts[] = {"FontAwesome Bold:size=14"};
 static const char dmenufont[] = "FontAwesome Bold:size=14";
 #include "/home/crahantan/.cache/wal/colors-wal-dwm.h"
+
+/* staticstatus */
+static const int statmonval = 1;
+
+/* Decide wich monitor shows the initial bar*/
+static const int initialbarmonitor = 1;
 
 /* tagging */
 static const char *tags[] = {"", "", "", "", "",
@@ -32,12 +46,11 @@ static const Rule rules[] = {
      */
     /* class      instance    title       tags mask     isfloating   monitor
        border width */
-    {"slstatus", NULL, NULL, 1 << 8, 0, -1, 1},
-    {"Firefox", NULL, NULL, 1 << 8, 0, -1, 0},
+    {"Firefox", NULL, NULL, 2 << 8, 0, 1, 5},
 };
 
 /* layout(s) */
-static const float mfact = 0.55; /* factor of master area size [0.05..0.95] */
+static const float mfact = 0.70; /* factor of master area size [0.05..0.95] */
 static const int nmaster = 1;    /* number of clients in master area */
 static const int resizehints =
     1; /* 1 means respect size hints in tiled resizals */
@@ -46,9 +59,9 @@ static const int lockfullscreen =
 
 static const Layout layouts[] = {
     /* symbol     arrange function */
-    {"[]=", tile}, /* first entry is default */
-    {"><>", NULL}, /* no layout function means floating behavior */
-    {"[M]", monocle},
+    {"[S]", stairs}, /* first entry is default */
+    {"><>", NULL},   /* no layout function means floating behavior */
+    {"[M]", monocle}, {"[]=", tile}, {NULL, NULL},
 };
 
 /* key definitions */
@@ -83,6 +96,7 @@ static const char *powermenu[] = {
 
 #include "../patches/pdwm/shifttag.c"
 #include "../patches/pdwm/shiftview.c"
+#include "focusurgent.c"
 
 static const Key keys[] = {
     /* modifier                     key        function        argument */
@@ -104,6 +118,9 @@ static const Key keys[] = {
     {MODKEY, XK_a, setlayout, {.v = &layouts[0]}},
     {MODKEY, XK_s, setlayout, {.v = &layouts[1]}},
     {MODKEY, XK_m, setlayout, {.v = &layouts[2]}},
+    {MODKEY, XK_y, setlayout, {.v = &layouts[3]}},
+    {MODKEY | ControlMask, XK_comma, cyclelayout, {.i = -1}},
+    {MODKEY | ControlMask, XK_period, cyclelayout, {.i = +1}},
     {MODKEY, XK_space, setlayout, {0}},
     {MODKEY | ShiftMask, XK_space, togglefloating, {0}},
     {MODKEY, XK_0, view, {.ui = ~0}},
@@ -122,6 +139,7 @@ static const Key keys[] = {
     {MODKEY | ShiftMask, XK_b, shifttag, {.i = -1}},
     {MODKEY, XK_n, shiftview, {.i = +1}},
     {MODKEY | ShiftMask, XK_n, shifttag, {.i = +1}},
+    {MODKEY, XK_u, focusurgent, {0}},
     {0, XF86XK_AudioRaiseVolume, spawn, {.v = volumeUp}},
     {0, XF86XK_AudioLowerVolume, spawn, {.v = volumeDown}},
     {0, XF86XK_AudioMute, spawn, {.v = volumeMute}},

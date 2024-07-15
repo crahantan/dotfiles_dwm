@@ -883,22 +883,6 @@ void drawbar(Monitor *m) {
     }
     tw = TEXTW(rstext) - lrpad + 2; /* 2px right padding */
     drw_text(drw, m->ww - tw, 0, tw, bh, 0, rstext, 0);
-  } else {
-    m->showbar = !m->showbar;
-    updatebarpos(m);
-    resizebarwin(m);
-    if (showsystray) {
-      XWindowChanges wc;
-      if (!m->showbar)
-        wc.y = -bh;
-      else if (m->showbar) {
-        wc.y = 0;
-        if (!m->topbar)
-          wc.y = m->mh - bh;
-      }
-      XConfigureWindow(dpy, systray->win, CWY, &wc);
-    }
-    arrange(m);
   }
 
   drw_map(drw, m->barwin, 0, 0, m->ww - stw, bh);
