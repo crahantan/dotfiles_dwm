@@ -1,2 +1,2 @@
 # dotfiles_dwm
-DWM dotfiles
+## NOTE: Script in process to install all configuration

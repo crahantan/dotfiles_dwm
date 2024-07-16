@@ -36,8 +36,8 @@ static const int statmonval = 0;
 static const int initialbarmonitor = 0;
 
 /* tagging */
-static const char *tags[] = {"", "", "", "", "",
-                             "", "", "", ""};
+static const char *tags[] = {"", "", "", "", "",
+                             "", "", "", ""};
 
 static const Rule rules[] = {
     /* xprop(1):
