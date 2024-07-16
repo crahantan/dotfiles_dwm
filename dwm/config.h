@@ -4,7 +4,7 @@
 
 /* appearance */
 static const unsigned int borderpx = 5; /* border pixel of windows */
-static const unsigned int gappx = 10;   /* gaps between windows */
+static const unsigned int gappx = 20;   /* gaps between windows */
 static const unsigned int snap = 32;    /* snap pixel */
 static const unsigned int systraypinning =
     0; /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor
@@ -15,7 +15,7 @@ static const unsigned int systrayspacing = 2; /* systray spacing */
 static const int systraypinningfailfirst =
     1; /* 1: if pinning fails, display systray on the first monitor, False:
           display systray on the last monitor*/
-static const int showsystray = 0;       /* 0 means no systray */
+static const int showsystray = 1;       /* 0 means no systray */
 static const int showbar = 1;           /* 0 means no bar */
 static const int topbar = 1;            /* 0 means bottom bar */
 static const int splitstatus = 1;       /* 1 for split status items */
@@ -30,10 +30,10 @@ static const char dmenufont[] = "FontAwesome Bold:size=14";
 #include "/home/crahantan/.cache/wal/colors-wal-dwm.h"
 
 /* staticstatus */
-static const int statmonval = 1;
+static const int statmonval = 0;
 
 /* Decide wich monitor shows the initial bar*/
-static const int initialbarmonitor = 1;
+static const int initialbarmonitor = 0;
 
 /* tagging */
 static const char *tags[] = {"", "", "", "", "",
@@ -50,7 +50,7 @@ static const Rule rules[] = {
 };
 
 /* layout(s) */
-static const float mfact = 0.70; /* factor of master area size [0.05..0.95] */
+static const float mfact = 0.65; /* factor of master area size [0.05..0.95] */
 static const int nmaster = 1;    /* number of clients in master area */
 static const int resizehints =
     1; /* 1 means respect size hints in tiled resizals */
@@ -61,7 +61,8 @@ static const Layout layouts[] = {
     /* symbol     arrange function */
     {"[S]", stairs}, /* first entry is default */
     {"><>", NULL},   /* no layout function means floating behavior */
-    {"[M]", monocle}, {"[]=", tile}, {NULL, NULL},
+    {"[M]", monocle},
+    {NULL, NULL},
 };
 
 /* key definitions */
@@ -118,7 +119,7 @@ static const Key keys[] = {
     {MODKEY, XK_a, setlayout, {.v = &layouts[0]}},
     {MODKEY, XK_s, setlayout, {.v = &layouts[1]}},
     {MODKEY, XK_m, setlayout, {.v = &layouts[2]}},
-    {MODKEY, XK_y, setlayout, {.v = &layouts[3]}},
+    //{MODKEY, XK_y, setlayout, {.v = &layouts[3]}},
     {MODKEY | ControlMask, XK_comma, cyclelayout, {.i = -1}},
     {MODKEY | ControlMask, XK_period, cyclelayout, {.i = +1}},
     {MODKEY, XK_space, setlayout, {0}},
