@@ -22,7 +22,7 @@ static const int splitstatus = 1;       /* 1 for split status items */
 static const char *splitdelim = ";";    /* Character used for separating status
                                          */
 static const unsigned int stairpx = 20; /* depth of the stairs layout */
-static const int stairdirection = 1;    /* 0: left-aligned, 1: right-aligned */
+static const int stairdirection = 0;    /* 0: left-aligned, 1: right-aligned */
 static const int stairsamesize =
     1; /* 1 means shrink all the staired windows to the same size */
 static const char *fonts[] = {"FontAwesome Bold:size=14"};
@@ -50,7 +50,7 @@ static const Rule rules[] = {
 };
 
 /* layout(s) */
-static const float mfact = 0.55; /* factor of master area size [0.05..0.95] */
+static const float mfact = 0.70; /* factor of master area size [0.05..0.95] */
 static const int nmaster = 1;    /* number of clients in master area */
 static const int resizehints =
     1; /* 1 means respect size hints in tiled resizals */
