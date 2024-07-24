@@ -1,0 +1,19 @@
+#!/bin/sh
+
+# the script will not work if xrandr is not available
+if [ -z "$(which xrandr)" ]; then
+  exit 1
+fi
+
+# monitor configuration
+#xrandr
+intern=eDP1
+extern=HDMI-1-0
+extern_lg=DP1
+
+if xrandr | grep "$extern disconnected"; then
+  xrandr --output "$extern" --off --output "$extern_lg" --off --output "$intern" --auto
+else
+  xrandr --output "$intern" --off --output "$extern" --mode 1920x1080 --rate 60 &
+  xrandr --output "$extern_lg" --mode 1920x1080 --right-of "$extern" &
+fi
