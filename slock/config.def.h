@@ -13,4 +13,5 @@ static const int failonclear = 1;
 
 /* Background image path, should be available to the user above */
 static const char *background_image =
-    "/home/crahantan/Imágenes/wallpapers/671021.jpg";
+    "/home/crahantan/Imágenes/wallpapers/everforest-walls/other/"
+    "japanese_pedestrian_street.png";
