@@ -22,7 +22,7 @@ export QT_QPA_PLATFORMTHEME=gtk2
 export _JAVA_AWT_WM_NONREPARENTING=1
 export AWT_TOOLKIT=MToolkit
 
-#wal
+#wal Xinerama mode
 exec $HOME/.local/bin/wal -R &
 
 #xfce-power-manager
@@ -34,21 +34,13 @@ exec /usr/lib/xfce-polkit/xfce-polkit &
 #xrdb Xresources
 exec xrdb -merge $HOME/.Xresources &
 
-#xrandr
-intern=eDP1
-extern=HDMI-0
-extern_lg=DP-1
-
-if xrandr | grep "$extern disconnected"; then
-	xrandr --output "$extern" --off --output "$extern_lg" --off --output "$intern" --auto
-else
-	xrandr --output "$intern" --off --output "$extern" --mode 1920x1080 --rate 60 --output "$extern_lg" --mode 1920x1080 --rate 60 --right-of "$extern"
-fi
+#monitor configuration
+exec $HOME/.local/bin/scripts/xrandr-selection &
 
 #dwm
 while true; do
-    # Log stderror to a file 
-    dwm 2> ~/.dwm.log
-    # No error logging
-    #dwm >/dev/null 2>&1
+  # Log stderror to a file
+  dwm 2>~/.dwm.log
+  # No error logging
+  #dwm >/dev/null 2>&1
 done

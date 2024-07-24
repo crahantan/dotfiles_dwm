@@ -25,8 +25,8 @@ static const unsigned int stairpx = 20; /* depth of the stairs layout */
 static const int stairdirection = 0;    /* 0: left-aligned, 1: right-aligned */
 static const int stairsamesize =
     1; /* 1 means shrink all the staired windows to the same size */
-static const char *fonts[] = {"FontAwesome Bold:size=14"};
-static const char dmenufont[] = "FontAwesome Bold:size=14";
+static const char *fonts[] = {"FontAwesome Bold:size=12"};
+static const char dmenufont[] = "FontAwesome Bold:size=12";
 #include "/home/crahantan/.cache/wal/colors-wal-dwm.h"
 
 /* staticstatus */
