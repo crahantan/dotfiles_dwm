@@ -47,7 +47,7 @@ static const Rule rules[] = {
     /* class      instance    title       tags mask     isfloating   monitor
        border width */
     {"Firefox", NULL, NULL, 2 << 8, 0, 1, 5},
-};
+    {"Argon", NULL, NULL, 0, True, -1}};
 
 /* layout(s) */
 static const float mfact = 0.55; /* factor of master area size [0.05..0.95] */
