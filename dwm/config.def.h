@@ -1,9 +1,26 @@
 /* See LICENSE file for copyright and license details. */
 #include <X11/XF86keysym.h>
 #include <stddef.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+/*concat paths*/
+char rofi_path[1000];
+char powermenu_path[1000];
+
+/*HOME*/
+const char *home = "/home/crahantan/";
+
+/*PATHs*/
+void concat() {
+  strcat(strcpy(rofi_path, home), ".config/rofi/launchers/type-2/launcher.sh");
+  strcat(strcpy(powermenu_path, home),
+         ".config/rofi/powermenu/type-2/powermenu.sh");
+}
 
 /* appearance */
-static const unsigned int borderpx = 5; /* border pixel of windows */
+static const unsigned int borderpx = 0; /* border pixel of windows */
 static const unsigned int gappx = 20;   /* gaps between windows */
 static const unsigned int snap = 32;    /* snap pixel */
 static const unsigned int systraypinning =
@@ -15,7 +32,7 @@ static const unsigned int systrayspacing = 2; /* systray spacing */
 static const int systraypinningfailfirst =
     1; /* 1: if pinning fails, display systray on the first monitor, False:
           display systray on the last monitor*/
-static const int showsystray = 0;       /* 0 means no systray */
+static const int showsystray = 1;       /* 0 means no systray */
 static const int showbar = 1;           /* 0 means no bar */
 static const int topbar = 1;            /* 0 means bottom bar */
 static const int splitstatus = 1;       /* 1 for split status items */
@@ -27,7 +44,7 @@ static const int stairsamesize =
     1; /* 1 means shrink all the staired windows to the same size */
 static const char *fonts[] = {"FontAwesome Bold:size=12"};
 static const char dmenufont[] = "FontAwesome Bold:size=12";
-#include "/home/crahantan/.cache/wal/colors-wal-dwm.h"
+#include "../../../.cache/wal/colors-wal-dwm.h"
 
 /* staticstatus */
 static const int statmonval = 0;
@@ -83,17 +100,14 @@ static const Layout layouts[] = {
 static char dmenumon[2] =
     "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = {"dmenu_run", "-m", dmenumon, "-fn", NULL};
-static const char *rofi[] = {
-    "/home/crahantan/.config/dwm/rofi/rofi/launchers/type-2/launcher.sh", NULL};
+static const char *rofi[] = {rofi_path, NULL};
 static const char *termcmd[] = {"kitty", NULL};
 static const char *volumeUp[] = {"pamixer", "-i", "5", NULL};
 static const char *volumeDown[] = {"pamixer", "-d", "5", NULL};
 static const char *volumeMute[] = {"pamixer", "-m", NULL};
 static const char *volumeUnMute[] = {"pamixer", "-u", NULL};
 static const char *restartDwm[] = {"restartdwm", NULL};
-static const char *powermenu[] = {
-    "/home/crahantan/.config/dwm/rofi/rofi/powermenu/type-2/powermenu.sh",
-    NULL};
+static const char *powermenu[] = {powermenu_path, NULL};
 
 #include "../patches/pdwm/shifttag.c"
 #include "../patches/pdwm/shiftview.c"
