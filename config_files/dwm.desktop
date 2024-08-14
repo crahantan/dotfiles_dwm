@@ -2,7 +2,7 @@
 Encoding=UTF-8
 Name=dwm
 Comment=Dynamic Window Manager
-Exec=/home/crahantan/.config/dwm/config_files/.xinitrc
+Exec=/home/crahantan/.config/dwm/config_files/dwm
 Icon=dwm
 Type=XSession
 

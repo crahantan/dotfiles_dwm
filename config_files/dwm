@@ -3,7 +3,7 @@
 userresources=$HOME/.Xresources
 
 #timezone
-exec timedatectl set-timezone America/Mexico_City &
+#exec timedatectl set-timezone America/Mexico_City &
 
 #xcompmgr
 exec xcompmgr &

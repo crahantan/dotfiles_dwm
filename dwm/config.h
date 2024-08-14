@@ -20,7 +20,7 @@ void concat() {
 }
 
 /* appearance */
-static const unsigned int borderpx = 0; /* border pixel of windows */
+static const unsigned int borderpx = 3; /* border pixel of windows */
 static const unsigned int gappx = 20;   /* gaps between windows */
 static const unsigned int snap = 32;    /* snap pixel */
 static const unsigned int systraypinning =
@@ -42,8 +42,8 @@ static const unsigned int stairpx = 20; /* depth of the stairs layout */
 static const int stairdirection = 0;    /* 0: left-aligned, 1: right-aligned */
 static const int stairsamesize =
     1; /* 1 means shrink all the staired windows to the same size */
-static const char *fonts[] = {"FontAwesome Bold:size=12"};
-static const char dmenufont[] = "FontAwesome Bold:size=12";
+static const char *fonts[] = {"JetBrainsMono Nerd Font Regular:size=12"};
+static const char dmenufont[] = "JetBrainsMono Nerd Font Regular:size=12";
 #include "../../../.cache/wal/colors-wal-dwm.h"
 
 /* staticstatus */
@@ -101,7 +101,7 @@ static char dmenumon[2] =
     "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = {"dmenu_run", "-m", dmenumon, "-fn", NULL};
 static const char *rofi[] = {rofi_path, NULL};
-static const char *termcmd[] = {"kitty", NULL};
+static const char *termcmd[] = {"alacritty", NULL};
 static const char *volumeUp[] = {"pamixer", "-i", "5", NULL};
 static const char *volumeDown[] = {"pamixer", "-d", "5", NULL};
 static const char *volumeMute[] = {"pamixer", "-m", NULL};
