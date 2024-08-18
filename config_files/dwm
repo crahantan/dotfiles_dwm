@@ -29,13 +29,13 @@ exec $HOME/.local/bin/wal -R &
 exec /usr/bin/xfce4-power-manager &
 
 #xfce-polkit
-exec /usr/lib/xfce-polkit/xfce-polkit &
+exec /usr/libexec/xfce-polkit &
 
 #xrdb Xresources
 exec xrdb -merge $HOME/.Xresources &
 
 #monitor configuration
-exec $HOME/.local/bin/scripts/xrandr-selection &
+exec $HOME/.config/dwm/scripts/xrandr-selection &
 
 #dwm
 while true; do
