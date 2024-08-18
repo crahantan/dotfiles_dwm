@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 
 /*concat paths*/
 char rofi_path[1000];
@@ -14,9 +15,9 @@ const char *home = "/home/crahantan/";
 
 /*PATHs*/
 void concat() {
-  strcat(strcpy(rofi_path, home), ".config/rofi/launchers/type-2/launcher.sh");
+  strcat(strcpy(rofi_path, home), ".config/rofi/launchers/type-5/launcher.sh");
   strcat(strcpy(powermenu_path, home),
-         ".config/rofi/powermenu/type-2/powermenu.sh");
+         ".config/rofi/powermenu/type-4/powermenu.sh");
 }
 
 /* appearance */
@@ -63,8 +64,7 @@ static const Rule rules[] = {
      */
     /* class      instance    title       tags mask     isfloating   monitor
        border width */
-    {"Firefox", NULL, NULL, 2 << 8, 0, 1, 5},
-    {"Argon", NULL, NULL, 0, True, -1}};
+    {"Argon", NULL, NULL, 0, true, -1}};
 
 /* layout(s) */
 static const float mfact = 0.55; /* factor of master area size [0.05..0.95] */
@@ -101,7 +101,7 @@ static char dmenumon[2] =
     "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = {"dmenu_run", "-m", dmenumon, "-fn", NULL};
 static const char *rofi[] = {rofi_path, NULL};
-static const char *termcmd[] = {"alacritty", NULL};
+static const char *termcmd[] = {"kitty", NULL};
 static const char *volumeUp[] = {"pamixer", "-i", "5", NULL};
 static const char *volumeDown[] = {"pamixer", "-d", "5", NULL};
 static const char *volumeMute[] = {"pamixer", "-m", NULL};
