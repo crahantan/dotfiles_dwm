@@ -48,10 +48,10 @@ static const char dmenufont[] = "Mononoki Nerd Font Regular:size=12";
 #include "../../../.cache/wal/colors-wal-dwm.h"
 
 /* staticstatus */
-static const int statmonval = 0;
+static const int statmonval = 1;
 
-/* Decide wich monitor shows bar*/
-static const int initialbarmonitor = 0;
+/* Set visualization bar in order to statmoval*/
+static const int initialbarmonitor = statmonval;
 
 /* tagging */
 static const char *tags[] = {"", "", "", "", "",
