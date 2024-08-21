@@ -5,8 +5,11 @@ userresources=$HOME/.Xresources
 #timezone
 #exec timedatectl set-timezone America/Mexico_City &
 
-#xcompmgr
-exec xcompmgr &
+#picom 
+exec picom --config $HOME/.config/picom/picom.conf &
+
+#xcompmg
+#exec xcompmgr &
 
 #xautolock
 exec xautolock -time 60 -locker slock &

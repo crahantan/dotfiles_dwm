@@ -15,7 +15,7 @@ const char *home = "/home/crahantan/";
 
 /*PATHs*/
 void concat() {
-  strcat(strcpy(rofi_path, home), ".config/rofi/launchers/type-5/launcher.sh");
+  strcat(strcpy(rofi_path, home), ".config/rofi/launchers/type-4/launcher.sh");
   strcat(strcpy(powermenu_path, home),
          ".config/rofi/powermenu/type-4/powermenu.sh");
 }
