@@ -7,7 +7,7 @@ fi
 
 # monitor configuration
 #xrandr
-intern=eDP1
+intern=eDP-1
 extern=HDMI-1-0
 extern_lg=DP1
 
