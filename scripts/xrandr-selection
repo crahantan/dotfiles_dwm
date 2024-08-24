@@ -11,10 +11,10 @@ intern=eDP-1
 extern=HDMI-1-0
 extern_lg=DP1
 
-if xrandr | grep "$extern disconnected"; then
-  xrandr --output "$extern" --off --output "$intern" --auto
-else
+if xrandr | grep "$extern connected"; then
   xrandr --output "$intern" --off --output "$extern" --mode 1920x1080 --rate 60 
+else
+  xrandr --output "$extern" --off --output "$intern" --auto
 
   # only in case use another monitor
   #xrandr --output "$extern_lg" --mode 1920x1080 --right-of "$extern" &
