@@ -12,7 +12,7 @@ extern=HDMI-1-0
 extern_lg=DP1
 
 if xrandr | grep "$extern disconnected"; then
-  xrandr --output "$extern" --off --output "$extern_lg" --off --output "$intern" --auto
+  xrandr --output "$extern" --off --output "$intern" --auto
 else
   xrandr --output "$intern" --off --output "$extern" --mode 1920x1080 --rate 60 
 
