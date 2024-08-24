@@ -14,6 +14,8 @@ extern_lg=DP1
 if xrandr | grep "$extern disconnected"; then
   xrandr --output "$extern" --off --output "$extern_lg" --off --output "$intern" --auto
 else
-  xrandr --output "$intern" --off --output "$extern" --mode 1920x1080 --rate 60 &
-  xrandr --output "$extern_lg" --mode 1920x1080 --right-of "$extern" &
+  xrandr --output "$intern" --off --output "$extern" --mode 1920x1080 --rate 60 
+
+  # only in case use another monitor
+  #xrandr --output "$extern_lg" --mode 1920x1080 --right-of "$extern" &
 fi
