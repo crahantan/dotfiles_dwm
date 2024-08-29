@@ -155,10 +155,10 @@ static const Key keys[] = {
     {MODKEY, XK_n, shiftview, {.i = +1}},
     {MODKEY | ShiftMask, XK_n, shifttag, {.i = +1}},
     {MODKEY, XK_u, focusurgent, {0}},
-    {0, XK_F3, spawn, {.v = volumeUp}},
-    {0, XK_F2, spawn, {.v = volumeDown}},
-    {0, XK_F4, spawn, {.v = volumeMute}},
-    {0, XK_F4, spawn, {.v = volumeUnMute}},
+    {0, XK_F4, spawn, {.v = volumeUp}},
+    {0, XK_F3, spawn, {.v = volumeDown}},
+    {0, XK_F5, spawn, {.v = volumeMute}},
+    {0, XK_F5, spawn, {.v = volumeUnMute}},
 
 };
 
