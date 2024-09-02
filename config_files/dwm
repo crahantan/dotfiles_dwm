@@ -18,7 +18,7 @@ exec xautolock -time 60 -locker slock &
 exec slstatus &
 
 #PATHS && exports
-export JAVA_HOME="/usr/lib/jvm/java-22-jdk"
+export JAVA_HOME="/usr/lib/jvm/default-java"
 export PATH=$HOME/.local/bin:$HOME/.local/bin/scripts:$JAVA_HOME/bin:$PATH
 export QT_QPA_PLATFORMTHEME=gtk2
 #java-dwm
@@ -38,7 +38,7 @@ exec /usr/libexec/xfce-polkit &
 exec xrdb -merge $HOME/.Xresources &
 
 #monitor configuration
-exec $HOME/.config/dwm/scripts/xrandr-selection &
+exec $HOME/.config/dwm/scripts/xrandr-selection & 
 
 #dwm
 while true; do
