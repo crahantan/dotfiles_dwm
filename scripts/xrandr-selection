@@ -1,9 +1,9 @@
 #!/bin/sh
 
 # the script will not work if xrandr is not available
-if [ -z "$(which xrandr)" ]; then
-  exit 1
-fi
+#if [ -z "$(which xrandr)" ]; then
+#  exit 1
+#fi
 
 # monitor configuration
 #xrandr
