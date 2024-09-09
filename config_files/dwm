@@ -40,6 +40,9 @@ exec xrdb -merge $HOME/.Xresources &
 #monitor configuration
 exec $HOME/.config/dwm/scripts/xrandr-selection & 
 
+#dunst
+exec dunst &
+
 #dwm
 while true; do
   # Log stderror to a file
