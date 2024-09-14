@@ -75,10 +75,12 @@ static const int lockfullscreen =
     1; /* 1 will force focus on the fullscreen window */
 
 static const Layout layouts[] = {
+/* first entry is default */
+/* no layout function means floating behavior */
     /* symbol     arrange function */
-    {"[S]", stairs}, /* first entry is default */
-    {"><>", NULL},   /* no layout function means floating behavior */
     {"[M]", monocle},
+    {"[S]", stairs}, 
+    {"><>", NULL},   
     {NULL, NULL},
 };
 
@@ -157,8 +159,8 @@ static const Key keys[] = {
     {MODKEY, XK_u, focusurgent, {0}},
     {0, XK_F4, spawn, {.v = volumeUp}},
     {0, XK_F3, spawn, {.v = volumeDown}},
-    {0, XK_F5, spawn, {.v = volumeMute}},
-    {0, XK_F5, spawn, {.v = volumeUnMute}},
+    {0, XK_F6, spawn, {.v = volumeMute}},
+    {0, XK_F6, spawn, {.v = volumeUnMute}},
 
 };
 
