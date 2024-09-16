@@ -22,7 +22,7 @@ void concat() {
 
 /* appearance */
 static const unsigned int borderpx = 3; /* border pixel of windows */
-static const unsigned int gappx = 45;   /* gaps between windows */
+static const unsigned int gappx = 10;   /* gaps between windows */
 static const unsigned int snap = 32;    /* snap pixel */
 static const unsigned int systraypinning =
     0; /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor
@@ -78,8 +78,8 @@ static const Layout layouts[] = {
 /* first entry is default */
 /* no layout function means floating behavior */
     /* symbol     arrange function */
-    {"[M]", monocle},
     {"[S]", stairs}, 
+    {"[M]", monocle},
     {"><>", NULL},   
     {NULL, NULL},
 };

@@ -9,7 +9,7 @@ userresources=$HOME/.Xresources
 #exec picom --config $HOME/.config/picom/picom.conf &
 
 #xcompmgr
-exec xcompmgr -c -f -C -t-5 -l-5 -o.55 &
+exec xcompmgr -c -C -t-5 -l-5 -o.55 &
 
 #xautolock
 exec xautolock -time 60 -locker slock &
