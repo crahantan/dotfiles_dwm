@@ -1,10 +1,9 @@
 /* See LICENSE file for copyright and license details. */
-#include <X11/XF86keysym.h>
+#include <stdbool.h>
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdbool.h>
 
 /*concat paths*/
 char rofi_path[1000];
@@ -43,9 +42,11 @@ static const unsigned int stairpx = 20; /* depth of the stairs layout */
 static const int stairdirection = 0;    /* 0: left-aligned, 1: right-aligned */
 static const int stairsamesize =
     1; /* 1 means shrink all the staired windows to the same size */
-static const char *fonts[] = {"Mononoki Nerd Font Regular:size=12"};
-static const char dmenufont[] = "Mononoki Nerd Font Regular:size=12";
-#include "../../../.cache/wal/colors-wal-dwm.h"
+static const char *fonts[] = {"Iosevka Nerd Font Regular:size=12"};
+static const char dmenufont[] = "Iosevka Nerd Font Regular:size=12";
+
+/*pywal for dwm*/
+#include "/home/crahantan/.cache/wal/colors-wal-dwm.h"
 
 /* staticstatus */
 static const int statmonval = 0;
@@ -64,23 +65,27 @@ static const Rule rules[] = {
      */
     /* class      instance    title       tags mask     isfloating   monitor
        border width */
-    {"Argon", NULL, NULL, 0, true, -1}};
 
-/* layout(s) */
-static const float mfact = 0.55; /* factor of master area size [0.05..0.95] */
-static const int nmaster = 1;    /* number of clients in master area */
+	{"Firefox",NULL,NULL,1,0,0-1}
+
+};
+
+    /* layout(s) */
+    static const float mfact =
+        0.55;                 /* factor of master area size [0.05..0.95] */
+static const int nmaster = 1; /* number of clients in master area */
 static const int resizehints =
     1; /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen =
     1; /* 1 will force focus on the fullscreen window */
 
 static const Layout layouts[] = {
-/* first entry is default */
-/* no layout function means floating behavior */
+    /* first entry is default */
+    /* no layout function means floating behavior */
     /* symbol     arrange function */
-    {"[S]", stairs}, 
+    {"[S]", stairs},
     {"[M]", monocle},
-    {"><>", NULL},   
+    {"><>", NULL},
     {NULL, NULL},
 };
 
@@ -103,7 +108,7 @@ static char dmenumon[2] =
     "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = {"dmenu_run", "-m", dmenumon, "-fn", NULL};
 static const char *rofi[] = {rofi_path, NULL};
-static const char *termcmd[] = {"kitty", NULL};
+static const char *termcmd[] = {"alacritty", NULL};
 static const char *volumeUp[] = {"pamixer", "-i", "5", NULL};
 static const char *volumeDown[] = {"pamixer", "-d", "5", NULL};
 static const char *volumeMute[] = {"pamixer", "-m", NULL};

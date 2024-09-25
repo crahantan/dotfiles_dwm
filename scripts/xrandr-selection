@@ -8,7 +8,7 @@
 # monitor configuration
 #xrandr
 intern=eDP-1
-extern=HDMI-1-0
+extern=HDMI-A-2
 extern_lg=DP1
 
 if xrandr | grep "$extern connected"; then
