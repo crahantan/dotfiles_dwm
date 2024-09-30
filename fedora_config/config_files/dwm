@@ -1,0 +1,31 @@
+#!/bin/sh
+
+#xautolock
+#exec xautolock -time 60 -locker slock &
+
+#slstatus
+#exec slstatus &
+
+#java-dwm
+export _JAVA_AWT_WM_NONREPARENTING=1
+export AWT_TOOLKIT=MToolkit
+
+#nitrogen 
+exec nitrogen --restore &
+
+#xfce-power-manager
+exec /usr/bin/xfce4-power-manager &
+
+#polkit
+exec /usr/lib/polkit-1 &
+
+#dunst
+exec dunst &
+
+#dwm reload
+while true; do
+  # Log stderror to a file
+  dwm 2>~/.dwm.log
+  # No error logging
+  #dwm >/dev/null 2>&1
+done
