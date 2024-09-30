@@ -1,10 +1,10 @@
 #!/bin/sh
 
 #xautolock
-#exec xautolock -time 60 -locker slock &
+exec xautolock -time 60 -locker slock &
 
 #slstatus
-#exec slstatus &
+exec slstatus &
 
 #java-dwm
 export _JAVA_AWT_WM_NONREPARENTING=1
