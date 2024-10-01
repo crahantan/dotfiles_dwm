@@ -76,6 +76,6 @@ static const struct arg args[] = {
     {alsa_master_vol, "  |     %s  ", NULL},
 
     // batery
-    {battery_perc, "  |     %s%%|", "BAT0"},
+    {battery_perc, "  |     %s%%", "BAT0"},
 
 };
