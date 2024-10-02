@@ -6,9 +6,15 @@ exec xautolock -time 60 -locker slock &
 #slstatus
 exec slstatus &
 
+# qt6ct
+export QT_QPA_PLATFORMTHEME=qt6ct
+
 #java-dwm
 export _JAVA_AWT_WM_NONREPARENTING=1
 export AWT_TOOLKIT=MToolkit
+
+# xcompmgr
+exec xcompmgr &
 
 #nitrogen 
 exec nitrogen --restore &
