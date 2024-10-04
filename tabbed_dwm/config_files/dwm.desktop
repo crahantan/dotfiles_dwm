@@ -1,8 +1,0 @@
-[Desktop Entry]
-Encoding=UTF-8
-Name=dwm
-Comment=Dynamic Window Manager
-Exec=/home/crahantan/Documentos/code/proyectos/dwm/fedora_config/config_files/dwm
-Icon=dwm
-Type=XSession
-
