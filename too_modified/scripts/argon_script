@@ -1,8 +1,0 @@
-#!/bin/sh
-
-#exec argon message
-while true; do
-  argon=$(</etc/argon/message)
-  xsetroot -name "$argon"
-  sleep 1
-done &

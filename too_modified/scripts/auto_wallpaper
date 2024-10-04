@@ -1,7 +1,0 @@
-#!/bin/bash
-
-while true
-do
-  feh --bg-fill --randomize /home/crahantan/.dwm/wallpapers/* 
-sleep 15m
-done
