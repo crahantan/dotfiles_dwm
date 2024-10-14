@@ -23,7 +23,7 @@ exec nitrogen --restore &
 exec /usr/bin/xfce4-power-manager &
 
 #polkit
-exec /usr/lib/polkit-1 &
+#exec /usr/lib/polkit-1 &
 
 #dunst
 exec dunst &
