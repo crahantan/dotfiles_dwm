@@ -1,0 +1,47 @@
+#!/bin/bash
+
+# Definir los monitores
+MONITOR_PRINCIPAL="HDMI-1-0"
+MONITOR_SECUNDARIO="DP-1"
+MONITOR_INTERNO="eDP-1"
+
+# Verificar si el monitor principal está conectado
+MONITOR_PRINCIPAL_ESTADO=$(xrandr | grep "$MONITOR_PRINCIPAL" | grep "connected")
+
+# Verificar si el monitor secundario está conectado
+MONITOR_SECUNDARIO_ESTADO=$(xrandr | grep "$MONITOR_SECUNDARIO" | grep "connected")
+
+# Si ambos monitores externos están desconectados, configurar el monitor interno
+if [ -z "$MONITOR_PRINCIPAL_ESTADO" ] && [ -z "$MONITOR_SECUNDARIO_ESTADO" ]; then
+    echo "No se detectaron monitores externos. Usando el monitor interno $MONITOR_INTERNO."
+    
+    # Activar el monitor interno (eDP-1)
+    xrandr --output $MONITOR_INTERNO --mode 1920x1080 --rate 60 --primary
+    
+    # Desactivar otros monitores (en caso de que estén activos)
+    xrandr --output $MONITOR_PRINCIPAL --off
+    xrandr --output $MONITOR_SECUNDARIO --off
+else
+    # Configurar el monitor principal (HDMI-1-0) y el secundario (DP-1)
+    if [ -n "$MONITOR_PRINCIPAL_ESTADO" ]; then
+        echo "Monitor externo $MONITOR_PRINCIPAL detectado. Configurando..."
+        xrandr --output $MONITOR_PRINCIPAL --primary --mode 1920x1080 --rate 60 --left-of $MONITOR_SECUNDARIO
+    fi
+    
+    if [ -n "$MONITOR_SECUNDARIO_ESTADO" ]; then
+        echo "Monitor externo $MONITOR_SECUNDARIO detectado. Configurando..."
+        xrandr --output $MONITOR_SECUNDARIO --mode 1920x1080 --rate 60 --right-of $MONITOR_PRINCIPAL
+    fi
+    
+    # Si el monitor interno (eDP-1) está conectado, lo habilitamos (en caso de que no se haya hecho)
+    if [ -z "$MONITOR_PRINCIPAL_ESTADO" ] && [ -z "$MONITOR_SECUNDARIO_ESTADO" ]; then
+        echo "No hay monitores externos. Activando $MONITOR_INTERNO."
+        xrandr --output $MONITOR_INTERNO --mode 1920x1080 --rate 60 --primary
+    fi
+fi
+
+# Deshabilitar monitores desconectados
+xrandr --output $(xrandr | grep " disconnected" | awk '{print $1}') --off
+
+# Mensaje de confirmación
+echo "Configuración de monitores completada."

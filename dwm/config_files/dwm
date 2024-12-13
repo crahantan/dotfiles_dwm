@@ -7,7 +7,7 @@ exec xautolock -time 60 -locker slock &
 exec slstatus &
 
 # qt6ct
-export QT_QPA_PLATFORMTHEME=qt6ct
+#export QT_QPA_PLATFORMTHEME=qt6ct
 
 #java-dwm
 export _JAVA_AWT_WM_NONREPARENTING=1
@@ -27,6 +27,9 @@ exec /usr/bin/xfce4-power-manager &
 
 #dunst
 exec dunst &
+
+#monitors
+exec /home/crahantan/code/dotfiles_dwm/dwm/scripts/monitors &
 
 #dwm reload
 while true; do
