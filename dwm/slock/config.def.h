@@ -13,4 +13,4 @@ static const int failonclear = 1;
 
 /* Background image path, should be available to the user above */
 static const char *background_image =
-    "/home/crahantan/Backup/wallpapers/1368485.jpeg";
+    "/home/crahantan/Documentos/wallpapers/1368485.jpeg";
