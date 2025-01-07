@@ -66,16 +66,16 @@ static const char unknown_str[] = "n/a";
  */
 static const struct arg args[] = {
     /* function format          argument */
-    {datetime, "%s", "DATE: %d %b %Y | TIME: %H:%M Hrs  "},
-    {ipv4, " | IP: %s  ", "eno1"},
-    {netspeed_rx, " | DOWN: %s  ", "eno1"},
-    {netspeed_tx, " | UP: %s  ", "eno1"},
-    {disk_perc, "| STORAGE: %s%%  ", "/"},
-    {ram_perc, "| RAM: %s%%  ", NULL},
-    {cpu_perc, "| CPU: %s%%  ", NULL},
-    {alsa_master_vol, " | VOL: %s  ", NULL},
+    {datetime, "%s", "    %d %b %Y |  󰥔  %H:%M Hrs"},
+    {ipv4, "  |  󰛳    %s  ", "eno1"},
+    {netspeed_rx, "  |     %s  ", "eno1"},
+    {netspeed_tx, "  |     %s  ", "eno1"},
+    {disk_perc, "  |     %s%%  ", "/"},
+    {ram_perc, "  |     %s%%  ", NULL},
+    {cpu_perc, "  |     %s%%  ", NULL},
+    {alsa_master_vol, "  |     %s  ", NULL},
 
     // batery
-    {battery_perc, " | BAT: %s%%  ", "BAT0"},
+    {battery_perc, "  |     %s%%", "BAT0"},
 
 };
