@@ -29,7 +29,7 @@ exec /usr/bin/xfce4-power-manager &
 exec dunst &
 
 #monitors
-exec /home/crahantan/code/dotfiles_dwm/dwm/scripts/monitors &
+exec /home/crahantan/Documentos/code/dotfiles_dwm/dwm/scripts/monitors &
 
 #dwm reload
 while true; do
