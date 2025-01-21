@@ -128,7 +128,7 @@ static const Key keys[] = {
     {MODKEY | ShiftMask, XK_n, shifttag, {.i = +1}},
     {MODKEY, XK_u, focusurgent, {0}},
     {MODKEY, XK_minus, setgaps, {.i = -1}},
-    {MODKEY, XK_equal, setgaps, {.i = +1}},
+    {MODKEY, XK_plus, setgaps, {.i = +1}},
     {MODKEY | ShiftMask, XK_equal, setgaps, {.i = 0}},
     {0, XK_F4, spawn, {.v = volumeUp}},
     {0, XK_F3, spawn, {.v = volumeDown}},
