@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Pamixer Decrease
+exec pamixer -d 5 & 
+
+# Get current volume level
+VOLUME=$(amixer get Master | grep 'Front Left' | awk -F'[][]' '{ print $2 }' | sed 's/%//')
+
+
+# Display notification using dunst
+dunstify -u normal "Volume: ${VOLUME}%"

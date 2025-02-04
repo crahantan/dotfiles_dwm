@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx = 5; /* border pixel of windows */
+static const unsigned int borderpx = 0; /* border pixel of windows */
 static const unsigned int gappx = 20;   /* gaps between windows */
 static const unsigned int snap = 32;    /* snap pixel */
 static const int showbar = 1;           /* 0 means no bar */
@@ -10,8 +10,8 @@ static const unsigned int stairpx = 10; /* depth of the stairs layout */
 static const int stairdirection = 1;    /* 0: left-aligned, 1: right-aligned */
 static const int stairsamesize =
     1; /* 1 means shrink all the staired windows to the same size */
-static const char *fonts[] = {"JetBrainsMono Nerd Font Medium:size=10"};
-static const char dmenufont[] = "JetBrainsMono Nerd Font Medium:size=10";
+static const char *fonts[] = {"Mononoki Nerd Font:size=10"};
+static const char dmenufont[] = "Mononoki Nerd Font:size=12";
 static const char col_gray1[] = "#222222";
 static const char col_gray2[] = "#444444";
 static const char col_gray3[] = "#cccccc";
@@ -83,11 +83,11 @@ static char dmenumon[2] =
 static const char *dmenucmd[] = {
     "dmenu_run", "-m",      dmenumon, "-fn",    dmenufont, "-nb",     col_gray1,
     "-nf",       col_gray3, "-sb",    col_main, "-sf",     col_gray4, NULL};
-static const char *termcmd[] = {"alacritty", NULL};
-static const char *volumeUp[] = {"pamixer", "-i", "5", NULL};
-static const char *volumeDown[] = {"pamixer", "-d", "5", NULL};
-static const char *volumeMute[] = {"pamixer", "-m", NULL};
-static const char *volumeUnMute[] = {"pamixer", "-u", NULL};
+static const char *termcmd[] = {"kitty", NULL};
+static const char *volumeUp[] = {"/home/crahantan/docs/code/dotfiles_dwm/dwm/scripts/dunst_volume_up", NULL};
+static const char *volumeDown[] = {"/home/crahantan/docs/code/dotfiles_dwm/dwm/scripts/dunst_volume_down", NULL};
+static const char *volumeMute[] = {"/home/crahantan/docs/code/dotfiles_dwm/dwm/scripts/dunst_volume_muted", NULL};
+static const char *volumeUnMute[] = {"/home/crahantan/docs/code/dotfiles_dwm/dwm/scripts/dunst_volume_unmuted", NULL};
 
 #include "../patches/dwm/shifttag.c"
 #include "../patches/dwm/shiftview.c"
@@ -134,7 +134,7 @@ static const Key keys[] = {
     {0, XK_F4, spawn, {.v = volumeUp}},
     {0, XK_F3, spawn, {.v = volumeDown}},
     {0, XK_F6, spawn, {.v = volumeMute}},
-    {0, XK_F6, spawn, {.v = volumeUnMute}},
+    {0, XK_F7, spawn, {.v = volumeUnMute}},
 };
 
 /* button definitions */
