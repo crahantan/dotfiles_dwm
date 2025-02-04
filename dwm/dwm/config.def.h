@@ -83,11 +83,11 @@ static char dmenumon[2] =
 static const char *dmenucmd[] = {
     "dmenu_run", "-m",      dmenumon, "-fn",    dmenufont, "-nb",     col_gray1,
     "-nf",       col_gray3, "-sb",    col_main, "-sf",     col_gray4, NULL};
-static const char *termcmd[] = {"kitty", NULL};
-static const char *volumeUp[] = {"/home/crahantan/docs/code/dotfiles_dwm/dwm/scripts/dunst_volume_up", NULL};
-static const char *volumeDown[] = {"/home/crahantan/docs/code/dotfiles_dwm/dwm/scripts/dunst_volume_down", NULL};
-static const char *volumeMute[] = {"/home/crahantan/docs/code/dotfiles_dwm/dwm/scripts/dunst_volume_muted", NULL};
-static const char *volumeUnMute[] = {"/home/crahantan/docs/code/dotfiles_dwm/dwm/scripts/dunst_volume_unmuted", NULL};
+static const char *termcmd[] = {"alacritty", NULL};
+static const char *volumeUp[] = {"", NULL};
+static const char *volumeDown[] = {"", NULL};
+static const char *volumeMute[] = {"", NULL};
+static const char *volumeUnMute[] = {"", NULL};
 
 #include "../patches/dwm/shifttag.c"
 #include "../patches/dwm/shiftview.c"
