@@ -52,13 +52,13 @@ static const int lockfullscreen =
   2                     // 0 = off, 1 = on if >1 client/view tag, 2 = always on
 #define BARTAB_TAGSPX 5 // # pixels for tag grid boxes
 #define BARTAB_TAGSROWS 3 // # rows in tag grid (9 tags, e.g. 3x3)
-static void (*bartabmonfns[])(Monitor *) = {tile /* , customlayoutfn */};
-static void (*bartabfloatfns[])(Monitor *) = {NULL /* , customlayoutfn */};
+static void (*bartabmonfns[])(Monitor *) = {stairs /* , customlayoutfn */};
+static void (*bartabfloatfns[])(Monitor *) = {stairs /* , customlayoutfn */};
 
 static const Layout layouts[] = {
     /* symbol     arrange function */
-    {"[]=", tile}, /* first entry is default */
-    {"[S]", stairs},
+    {"[S]", stairs}, /* first entry is default */
+    {"[]=", tile},     
     {"[M]", monocle},
     {"><>", NULL}, /* no layout function means floating behavior */
 };
@@ -83,6 +83,7 @@ static char dmenumon[2] =
 static const char *dmenucmd[] = {
     "dmenu_run", "-m",      dmenumon, "-fn",    dmenufont, "-nb",     col_gray1,
     "-nf",       col_gray3, "-sb",    col_main, "-sf",     col_gray4, NULL};
+static const char *roficmd[] = {"rofi","-combi-modi", "window,drun,run", "-font", "Mononoki Nerd Font 12", "-show", "combi", "-icon-theme", "Papirus", "-show-icons", NULL};
 static const char *termcmd[] = {"alacritty", NULL};
 static const char *volumeUp[] = {"", NULL};
 static const char *volumeDown[] = {"", NULL};
@@ -95,7 +96,7 @@ static const char *volumeUnMute[] = {"", NULL};
 
 static const Key keys[] = {
     /* modifier                     key        function        argument */
-    {MODKEY, XK_d, spawn, {.v = dmenucmd}},
+    {MODKEY, XK_d, spawn, {.v = roficmd}},
     {MODKEY, XK_Return, spawn, {.v = termcmd}},
     {MODKEY, XK_t, togglebar, {0}},
     {MODKEY, XK_j, focusstack, {.i = +1}},
