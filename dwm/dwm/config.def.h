@@ -85,10 +85,10 @@ static const char *dmenucmd[] = {
     "-nf",       col_gray3, "-sb",    col_main, "-sf",     col_gray4, NULL};
 static const char *roficmd[] = {"rofi","-combi-modi", "window,drun,run", "-font", "Mononoki Nerd Font 12", "-show", "combi", "-icon-theme", "Papirus", "-show-icons", NULL};
 static const char *termcmd[] = {"alacritty", NULL};
-static const char *volumeUp[] = {"", NULL};
-static const char *volumeDown[] = {"", NULL};
-static const char *volumeMute[] = {"", NULL};
-static const char *volumeUnMute[] = {"", NULL};
+static const char *volumeUp[] = {"pamixer","-i","5", NULL};
+static const char *volumeDown[] = {"pamixer","-d","5", NULL};
+static const char *volumeMute[] = {"pamixer","-m", NULL};
+static const char *volumeUnMute[] = {"pamixer","-u", NULL};
 
 #include "../patches/dwm/shifttag.c"
 #include "../patches/dwm/shiftview.c"
