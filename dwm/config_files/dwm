@@ -20,7 +20,7 @@ exec xcompmgr &
 exec nitrogen --restore &
 
 #xfce-power-manager
-exec /usr/bin/xfce4-power-manager &
+#exec /usr/bin/xfce4-power-manager &
 
 #polkit
 #exec /usr/lib/polkit-1 &
