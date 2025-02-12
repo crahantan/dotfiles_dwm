@@ -20,7 +20,7 @@ exec xcompmgr &
 exec nitrogen --restore &
 
 #xfce-power-manager
-#exec /usr/bin/xfce4-power-manager &
+exec /usr/bin/xfce4-power-manager &
 
 #polkit
 #exec /usr/lib/polkit-1 &
@@ -29,7 +29,7 @@ exec nitrogen --restore &
 exec dunst &
 
 #monitors
-exec /home/crahantan/docs/code/dotfiles_dwm/dwm/scripts/monitors &
+exec /home/crahantan/Documentos/code/dotfiles_dwm/dwm/scripts/monitors &
 
 #dwm reload
 while true; do

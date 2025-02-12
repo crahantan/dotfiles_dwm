@@ -1,0 +1,7 @@
+#!/bin/bash
+
+
+test=$(xrandr | grep "DP-1" | grep "connected")
+
+echo $test
+
