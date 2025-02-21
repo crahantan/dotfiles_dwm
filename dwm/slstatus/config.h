@@ -68,6 +68,7 @@ static const struct arg args[] = {
     /* function format          argument */
     {datetime, "%s", "    %d %b %Y |  󰥔  %H:%M Hrs"},
     {ipv4, " |  󰖂  %s", "proton0"},
+    {ipv6, " |  󰖂  %s", "proton0"},
     {netspeed_rx, " |   %s", "proton0"},
     {netspeed_tx, " |   %s", "proton0"},
     {disk_perc, " |   %s%%", "/"},
