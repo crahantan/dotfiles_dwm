@@ -84,7 +84,7 @@ static const char *dmenucmd[] = {
     "dmenu_run", "-m",      dmenumon, "-fn",    dmenufont, "-nb",     col_gray1,
     "-nf",       col_gray3, "-sb",    col_main, "-sf",     col_gray4, NULL};
 static const char *roficmd[] = {"rofi","-combi-modi", "window,drun,run", "-font", "Mononoki Nerd Font 12", "-show", "combi", "-icon-theme", "Papirus", "-show-icons", NULL};
-static const char *termcmd[] = {"alacritty", NULL};
+static const char *termcmd[] = {"/usr/bin/warp-terminal", NULL};
 static const char *volumeUp[] = {"pamixer","-i","5", NULL};
 static const char *volumeDown[] = {"pamixer","-d","5", NULL};
 static const char *volumeMute[] = {"pamixer","-m", NULL};
