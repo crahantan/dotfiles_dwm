@@ -4,7 +4,7 @@
 #include <string.h>
 #include "../util.h"
 
-#define TMP_BUF_SIZE 22
+#define TMP_BUF_SIZE 14
 #define VOL_BUF_SIZE 5
 
 const char *
@@ -15,7 +15,7 @@ alsa_master_vol(const char *unused)
 	short b;
 	unsigned short i = 0;
 	
-	FILE *fp = popen("amixer get Master | tail -c21", "r");
+	FILE *fp = popen("amixer get Master | tail -c13", "r");
 	char ch;
 	while ((ch = fgetc(fp)) != EOF && i < TMP_BUF_SIZE)
 		tmp_buf[i++] = ch;
