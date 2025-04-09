@@ -52,14 +52,14 @@ static const int lockfullscreen =
   2                     // 0 = off, 1 = on if >1 client/view tag, 2 = always on
 #define BARTAB_TAGSPX 5 // # pixels for tag grid boxes
 #define BARTAB_TAGSROWS 3 // # rows in tag grid (9 tags, e.g. 3x3)
-static void (*bartabmonfns[])(Monitor *) = {stairs /* , customlayoutfn */};
-static void (*bartabfloatfns[])(Monitor *) = {stairs /* , customlayoutfn */};
+static void (*bartabmonfns[])(Monitor *) = {monocle /* , customlayoutfn */};
+static void (*bartabfloatfns[])(Monitor *) = {monocle /* , customlayoutfn */};
 
 static const Layout layouts[] = {
     /* symbol     arrange function */	
-    {"[S]", stairs},  /* first entry is default */    
+    {"[M]", monocle}, /* first entry is default */ 
+    {"[S]", stairs},     
     {"[]=", tile},   
-    {"[M]", monocle},
     {"><>", NULL}, /* no layout function means floating behavior */
 };
 
