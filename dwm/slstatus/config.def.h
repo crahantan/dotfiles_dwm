@@ -70,7 +70,7 @@ static const struct arg args[] = {
     {datetime, "%s", "    %d %b %Y |  󰥔  %H:%M Hrs"},
     {ipv4, " |  󰖂  %s", "proton0"},
     {ipv4, " |    %s", "docker0"},
-    {ipv4, " |    %s", "wl01"},
+    {ipv4, " |    %s", "wlo1"},
     {ipv4, " |  󰛳  %s", "eno1"},
     {netspeed_rx, " |   %s", "eno1"},
     {netspeed_tx, " |   %s", "eno1"},
