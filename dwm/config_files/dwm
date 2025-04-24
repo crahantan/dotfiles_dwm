@@ -13,8 +13,11 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 export _JAVA_AWT_WM_NONREPARENTING=1
 export AWT_TOOLKIT=MToolkit
 
-# xcompmgr
-exec xcompmgr &
+#xcompmgr
+#exec xcompmgr &
+
+#picom
+exec picom --config /home/crahantan/.config/picom/picom.conf &
 
 #nitrogen 
 exec nitrogen --restore &

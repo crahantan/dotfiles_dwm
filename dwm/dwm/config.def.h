@@ -2,7 +2,7 @@
 
 /* appearance */
 static const unsigned int borderpx = 2; /* border pixel of windows */
-static const unsigned int gappx = 0;   /* gaps between windows */
+static const unsigned int gappx = 20;   /* gaps between windows */
 static const unsigned int snap = 32;    /* snap pixel */
 static const int showbar = 1;           /* 0 means no bar */
 static const int topbar = 1;            /* 0 means bottom bar */
@@ -52,15 +52,17 @@ static const int lockfullscreen =
   2                     // 0 = off, 1 = on if >1 client/view tag, 2 = always on
 #define BARTAB_TAGSPX 5 // # pixels for tag grid boxes
 #define BARTAB_TAGSROWS 3 // # rows in tag grid (9 tags, e.g. 3x3)
-static void (*bartabmonfns[])(Monitor *) = {stairs /* , customlayoutfn */};
-static void (*bartabfloatfns[])(Monitor *) = {stairs /* , customlayoutfn */};
+static void (*bartabmonfns[])(Monitor *) = {stairs,monocle,tile,NULL /* , customlayoutfn */};
+static void (*bartabfloatfns[])(Monitor *) = {stairs,monocle,tile,NULL /* , customlayoutfn */};
 
 static const Layout layouts[] = {
     /* symbol     arrange function */	
-    {"[S]", stairs},  /* first entry is default */  
-    {"[M]", monocle},     
-		{"[]=", tile},   
-    {"><>", NULL}, /* no layout function means floating behavior */
+		/* first entry is default */ 
+		/* no layout function means floating behavior */
+		{"[]=", tile},  
+    {"><>", NULL}, 
+    {"[S]", stairs},     
+		{"[M]", monocle},     
 };
 
 /* key definitions */
