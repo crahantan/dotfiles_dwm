@@ -72,7 +72,7 @@ dnf -y install libX11-devel libXft-devel libXinerama-devel libXrandr-devel \
 # Instalar programas adicionales solicitados
 echo "### Instalando programas adicionales (dunst, rofi, pamixer, xcompmgr)..."
 dnf -y install dunst rofi pamixer xcompmgr zathura zathura-pdf-poppler \
-	zathura-ps xfce4-power-manager xautolock
+	zathura-ps xfce4-power-manager xautolock picom
 
 # Instalar utilidades adicionales útiles para un entorno dwm
 echo "### Instalando utilidades adicionales útiles..."
