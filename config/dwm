@@ -20,7 +20,7 @@ exec xcompmgr &
 exec nitrogen --restore &
 
 #xfce-power-manager
-exec /usr/bin/xfce4-power-manager &
+exec xfce4-power-manager &
 
 #dunst
 exec dunst &
