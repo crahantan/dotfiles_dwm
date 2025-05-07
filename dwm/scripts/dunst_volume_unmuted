@@ -1,8 +1,0 @@
-#!/bin/bash
-
-# Pamixer Decrease
-exec pamixer -u & 
-
-
-# Display notification using dunst
-dunstify -u normal "Volume: Unmuted%"
