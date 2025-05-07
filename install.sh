@@ -26,14 +26,12 @@ dnf -y update
 
 # Instalar grupo de desarrollo y herramientas básicas
 echo "### Instalando herramientas de desarrollo..."
-dnf -y group install "Development Tools" "C Development Tools and Libraries"
-dnf -y install git neovim wget curl
+dnf -y install git neovim wget curl make gcc gcc-c++
 
 # Instalar Xorg y componentes necesarios
 echo "### Instalando Xorg y componentes necesarios..."
 dnf -y install xorg-x11-server-Xorg xorg-x11-xinit xorg-x11-xauth \
-    xorg-x11-drv-libinput xorg-x11-utils xorg-x11-server-utils \
-    xorg-x11-xkb-utils xrdb xbacklight xorg-x11-fonts-misc \
+    xorg-x11-drv-libinput xrdb xbacklight xorg-x11-fonts-misc \
     xorg-x11-fonts-100dpi xorg-x11-fonts-75dpi xorg-x11-fonts-Type1 \
     xorg-x11-fonts-truetype fontawesome-fonts fontawesome-fonts-web \
     dejavu-sans-fonts dejavu-sans-mono-fonts dejavu-serif-fonts \
@@ -61,6 +59,8 @@ dnf -y install feh nitrogen lxappearance pcmanfm alacritty \
 # Crear directorios para los códigos fuente
 echo "### Creando directorios para los códigos fuente..."
 mkdir -p ~/.config/suckless
+cp -rf ./config ~/.config/suckless/
+cp -rf ./patches ~/.config/suckless/
 cp -rf ./dwm ~/.config/suckless/
 cp -rf ./slock ~/.config/suckless/
 cp -rf ./slstatus ~/.config/suckless/
