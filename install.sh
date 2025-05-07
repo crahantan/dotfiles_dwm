@@ -33,7 +33,7 @@ echo "### Instalando Xorg y componentes necesarios..."
 dnf -y install xorg-x11-server-Xorg xorg-x11-xinit xorg-x11-xauth \
     xorg-x11-drv-libinput xrdb xbacklight xorg-x11-fonts-misc \
     xorg-x11-fonts-100dpi xorg-x11-fonts-75dpi xorg-x11-fonts-Type1 \
-    xorg-x11-fonts-truetype fontawesome-fonts fontawesome-fonts-web \
+    fontawesome-fonts fontawesome-fonts-web \
     dejavu-sans-fonts dejavu-sans-mono-fonts dejavu-serif-fonts \
     google-noto-sans-fonts google-noto-serif-fonts
 
