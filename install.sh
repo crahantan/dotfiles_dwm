@@ -47,12 +47,13 @@ dnf -y install libX11-devel libXft-devel libXinerama-devel libXrandr-devel \
 
 # Instalar programas adicionales solicitados
 echo "### Instalando programas adicionales (dunst, rofi, pamixer, xcompmgr)..."
-dnf -y install dunst rofi pamixer xcompmgr zathura zathura-pdf-poppler zathura-ps
+dnf -y install dunst rofi pamixer xcompmgr zathura zathura-pdf-poppler \
+	zathura-ps xfce4-power-manager
 
 # Instalar utilidades adicionales útiles para un entorno dwm
 echo "### Instalando utilidades adicionales útiles..."
 dnf -y install feh nitrogen lxappearance pcmanfm alacritty \
-    dmenu unclutter xwallpaper maim slop xclip xsel redshift \
+    dmenu unclutter maim slop xclip xsel redshift \
     NetworkManager-tui alsa-utils volumeicon \
     notification-daemon arandr scrot lxrandr
 
@@ -89,13 +90,14 @@ cp -rf ~/.config/suckless/config/zathura ~/.config/
 
 
 # Crear entrada de escritorio para el gestor de inicio de sesión
+HOME_DIR="$HOME"
 echo "### Creando entrada para el gestor de inicio de sesión..."
 cat > /usr/share/xsessions/dwm.desktop << EOF
 [Desktop Entry]
 Encoding=UTF-8
 Name=dwm
 Comment=Dynamic Window Manager
-Exec=~/.config/suckless/config_files/dwm
+Exec=${HOME_DIR}/.config/suckless/config/dwm
 Icon=dwm
 Type=Application
 EOF
