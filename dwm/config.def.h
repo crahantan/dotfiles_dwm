@@ -4,8 +4,8 @@
 static const unsigned int borderpx = 4; /* border pixel of windows */
 static const unsigned int gappx = 20;   /* gaps between windows */
 static const unsigned int snap = 32;    /* snap pixel */
-static const int showbar = 1;           /* 0 means no bar */
-static const int topbar = 1;            /* 0 means bottom bar */
+static const int showbar = 0;           /* 0 means no bar */
+static const int topbar = 0;            /* 0 means bottom bar */
 static const unsigned int stairpx = 10; /* depth of the stairs layout */
 static const int stairdirection = 1;    /* 0: left-aligned, 1: right-aligned */
 static const int stairsamesize =
@@ -20,12 +20,13 @@ static const char col_main[] = "#60656f";
 static const char *colors[][3] = {
     /*               fg         bg         border   */
     [SchemeNorm] = {col_gray3, col_gray1, col_gray1},
-    [SchemeSel] = {col_gray4, col_main, col_gray2 },
+    [SchemeSel] = {col_gray4, col_main, col_gray2},
     [SchemeTabActive] = {col_gray4, col_gray1, col_gray1},
     [SchemeTabInactive] = {col_gray4, col_gray3, col_gray4}};
 
 /* tagging */
-static const char *tags[] = {" ", " ", " ", " ", " ", " ", " ", " ", " "};
+static const char *tags[] = {" ", " ", " ", " ", " ",
+                             " ", " ", " ", " "};
 
 static const Rule rules[] = {
     /* xprop(1):
@@ -38,8 +39,8 @@ static const Rule rules[] = {
 };
 
 /* layout(s) */
-static const float mfact = 0.6; /* factor of master area size [0.05..0.95] */
-static const int nmaster = 1;    /* number of clients in master area */
+static const float mfact = 0.8; /* factor of master area size [0.05..0.95] */
+static const int nmaster = 1;   /* number of clients in master area */
 static const int resizehints =
     1; /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen =
@@ -52,17 +53,19 @@ static const int lockfullscreen =
   2                     // 0 = off, 1 = on if >1 client/view tag, 2 = always on
 #define BARTAB_TAGSPX 5 // # pixels for tag grid boxes
 #define BARTAB_TAGSROWS 3 // # rows in tag grid (9 tags, e.g. 3x3)
-static void (*bartabmonfns[])(Monitor *) = {stairs,monocle,tile,NULL /* , customlayoutfn */};
-static void (*bartabfloatfns[])(Monitor *) = {stairs,monocle,tile,NULL /* , customlayoutfn */};
+static void (*bartabmonfns[])(Monitor *) = {stairs, monocle, tile,
+                                            NULL /* , customlayoutfn */};
+static void (*bartabfloatfns[])(Monitor *) = {stairs, monocle, tile,
+                                              NULL /* , customlayoutfn */};
 
 static const Layout layouts[] = {
-    /* symbol     arrange function */	
-		/* first entry is default */ 
-		/* no layout function means floating behavior */
-		{"[]=", tile},  
-    {"><>", NULL}, 
-    {"[S]", stairs},     
-		{"[M]", monocle},     
+    /* symbol     arrange function */
+    /* first entry is default */
+    /* no layout function means floating behavior */
+    {"[S]", stairs},
+    {"[]=", tile},
+    {"><>", NULL},
+    {"[M]", monocle},
 };
 
 /* key definitions */
@@ -85,12 +88,22 @@ static char dmenumon[2] =
 static const char *dmenucmd[] = {
     "dmenu_run", "-m",      dmenumon, "-fn",    dmenufont, "-nb",     col_gray1,
     "-nf",       col_gray3, "-sb",    col_main, "-sf",     col_gray4, NULL};
-static const char *roficmd[] = {"rofi","-combi-modi", "window,drun,run", "-font", "Mononoki Nerd Font 12", "-show", "combi", "-icon-theme", "Papirus", "-show-icons", NULL};
+static const char *roficmd[] = {"rofi",
+                                "-combi-modi",
+                                "window,drun,run",
+                                "-font",
+                                "Mononoki Nerd Font 12",
+                                "-show",
+                                "combi",
+                                "-icon-theme",
+                                "Papirus",
+                                "-show-icons",
+                                NULL};
 static const char *termcmd[] = {"alacritty", NULL};
-static const char *volumeUp[] = {"pamixer","-i","5", NULL};
-static const char *volumeDown[] = {"pamixer","-d","5", NULL};
-static const char *volumeMute[] = {"pamixer","-m", NULL};
-static const char *volumeUnMute[] = {"pamixer","-u", NULL};
+static const char *volumeUp[] = {"pamixer", "-i", "5", NULL};
+static const char *volumeDown[] = {"pamixer", "-d", "5", NULL};
+static const char *volumeMute[] = {"pamixer", "-m", NULL};
+static const char *volumeUnMute[] = {"pamixer", "-u", NULL};
 
 #include "../patches/dwm/shifttag.c"
 #include "../patches/dwm/shiftview.c"

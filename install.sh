@@ -90,6 +90,7 @@ chown -R $USERNAME:$USERNAME $USER_HOME/.config
 
 # Copiamos directorios config
 cp -rf ./config $USER_HOME/.config/suckless/
+cp -rf ./scripts $USER_HOME/.config/suckless/
 cp -rf ./patches $USER_HOME/.config/suckless/
 cp -rf ./dwm $USER_HOME/.config/suckless/
 cp -rf ./slock $USER_HOME/.config/suckless/
@@ -132,6 +133,7 @@ Exec=${USER_HOME}/.config/suckless/config/dwm
 Icon=dwm
 Type=Application
 EOF
+
 
 echo "==================================================================="
 echo "¡Instalación completada!"
