@@ -77,7 +77,7 @@ dnf -y install dunst rofi pamixer xcompmgr zathura zathura-pdf-poppler \
 # Instalar utilidades adicionales útiles para un entorno dwm
 echo "### Instalando utilidades adicionales útiles..."
 dnf -y install feh nitrogen lxappearance pcmanfm alacritty \
-    dmenu unclutter maim slop xclip xsel redshift \
+    dmenu unclutter maim slop xclip xsel redshift kitty\
     NetworkManager-tui alsa-utils volumeicon \
     notification-daemon arandr scrot lxrandr
 
@@ -95,6 +95,14 @@ cp -rf ./patches $USER_HOME/.config/suckless/
 cp -rf ./dwm $USER_HOME/.config/suckless/
 cp -rf ./slock $USER_HOME/.config/suckless/
 cp -rf ./slstatus $USER_HOME/.config/suckless/
+
+# Copiar archivos de configuración a .config
+cp -rf $USER_HOME/.config/suckless/config/alacritty $USER_HOME/.config/
+cp -rf $USER_HOME/.config/suckless/config/dunst $USER_HOME/.config/
+cp -rf $USER_HOME/.config/suckless/config/kitty $USER_HOME/.config/
+cp -rf $USER_HOME/.config/suckless/config/ranger $USER_HOME/.config/
+cp -rf $USER_HOME/.config/suckless/config/rofi $USER_HOME/.config/
+cp -rf $USER_HOME/.config/suckless/config/zathura $USER_HOME/.config/
 
 # Compilar e instalar dwm
 echo "### Compilando e instalando dwm..."

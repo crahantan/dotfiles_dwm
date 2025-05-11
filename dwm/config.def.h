@@ -10,8 +10,8 @@ static const unsigned int stairpx = 10; /* depth of the stairs layout */
 static const int stairdirection = 1;    /* 0: left-aligned, 1: right-aligned */
 static const int stairsamesize =
     1; /* 1 means shrink all the staired windows to the same size */
-static const char *fonts[] = {"Mononoki Nerd Font:size=10"};
-static const char dmenufont[] = "Mononoki Nerd Font:size=12";
+static const char *fonts[] = {"Mononoki Nerd Font:size=14"};
+static const char dmenufont[] = "Mononoki Nerd Font:size=14";
 static const char col_gray1[] = "#222222";
 static const char col_gray2[] = "#444444";
 static const char col_gray3[] = "#cccccc";
@@ -92,14 +92,14 @@ static const char *roficmd[] = {"rofi",
                                 "-combi-modi",
                                 "window,drun,run",
                                 "-font",
-                                "Mononoki Nerd Font 12",
+                                "Mononoki Nerd Font 18",
                                 "-show",
                                 "combi",
                                 "-icon-theme",
                                 "Papirus",
                                 "-show-icons",
                                 NULL};
-static const char *termcmd[] = {"alacritty", NULL};
+static const char *termcmd[] = {"kitty", NULL};
 static const char *volumeUp[] = {"pamixer", "-i", "5", NULL};
 static const char *volumeDown[] = {"pamixer", "-d", "5", NULL};
 static const char *volumeMute[] = {"pamixer", "-m", NULL};

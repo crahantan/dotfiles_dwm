@@ -2,7 +2,7 @@
 normal = { family = "Mononoki Nerd Font", style = "Regular" }
 bold = { family = "Mononoki Nerd Font", style = "Bold" }
 italic = { family = "Mononoki Nerd Font", style = "Italic" }
-size = 16.0
+size = 20.0
 
 [window]
 decorations = "none"
