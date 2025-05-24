@@ -22,8 +22,8 @@ exec nitrogen --restore &
 #xfce-power-manager
 exec xfce4-power-manager &
 
-#xcompmgr
-#exec xcompmgr -n -c -t-5 -l-5 -r4.2 -o.55 &
+#picom
+exec picom &
 
 #dunst
 exec dunst &

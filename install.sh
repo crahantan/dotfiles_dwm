@@ -103,6 +103,7 @@ cp -rf $USER_HOME/.config/suckless/config/kitty $USER_HOME/.config/
 cp -rf $USER_HOME/.config/suckless/config/ranger $USER_HOME/.config/
 cp -rf $USER_HOME/.config/suckless/config/rofi $USER_HOME/.config/
 cp -rf $USER_HOME/.config/suckless/config/zathura $USER_HOME/.config/
+cp -rf $USER_HOME/.config/suckless/config/picom $USER_HOME/.config/
 
 # Compilar e instalar dwm
 echo "### Compilando e instalando dwm..."
