@@ -23,7 +23,7 @@ exec nitrogen --restore &
 exec xfce4-power-manager &
 
 #xcompmgr
-exec xcompmgr -n -c -t-5 -l-5 -r4.2 -o.55 &
+#exec xcompmgr -n -c -t-5 -l-5 -r4.2 -o.55 &
 
 #dunst
 exec dunst &
