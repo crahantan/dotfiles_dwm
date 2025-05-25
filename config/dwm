@@ -7,7 +7,7 @@ exec xautolock -time 60 -locker slock &
 exec slstatus &
 
 # qt gtk2
-export QT_QPA_PLATFORMTHEME=gtk2
+export QT_QPA_PLATFORMTHEME=gtk3
 
 #java-dwm
 export _JAVA_AWT_WM_NONREPARENTING=1
