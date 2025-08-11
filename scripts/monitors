@@ -1,16 +1,19 @@
 #!/bin/bash
 
+# Config Omen
 # Verifica si HDMI-1-0 está conectado
-if xrandr | grep "HDMI-1-0 connected"; then
+#if xrandr | grep "HDMI-1-0 connected"; then
     # Activa HDMI-1-2
-    xrandr --output HDMI-1-0 --mode 1920x1080 --rate 60 --primary
+#    xrandr --output HDMI-1-0 --mode 1920x1080 --rate 60 --primary
     # Si HDMI-1-0 está conectado, pon el monitor interno a la derecha
-    xrandr --output eDP-1 --mode 1920x1080 --rate 60 --right-of HDMI-1-0
-else
+#    xrandr --output eDP-1 --mode 1920x1080 --rate 60 --right-of HDMI-1-0
+#else
     # Si HDMI-1-2 no está conectado, enciende el monitor interno eDP-1
-    xrandr --output eDP-1 --mode 1920x1080 --rate 60 
-fi
+#    xrandr --output eDP-1 --mode 1920x1080 --rate 60 
+#fi
 
 # Salida exitosa
+# config pc Dn4
+xrandr --output HDMI-2 --mode 1920x1080 --rate 60 --primary
 echo "Configuración de monitores completada."
 
