@@ -104,6 +104,7 @@ static const char *volumeUp[] = {"pamixer", "-i", "5", NULL};
 static const char *volumeDown[] = {"pamixer", "-d", "5", NULL};
 static const char *volumeMute[] = {"pamixer", "-m", NULL};
 static const char *volumeUnMute[] = {"pamixer", "-u", NULL};
+static const char *screenshoot[] = {"xfce4-screenshooter", "-f", NULL};
 
 #include "../patches/dwm/shifttag.c"
 #include "../patches/dwm/shiftview.c"
@@ -111,6 +112,7 @@ static const char *volumeUnMute[] = {"pamixer", "-u", NULL};
 
 static const Key keys[] = {
     /* modifier                     key        function        argument */
+    {MODKEY | ShiftMask, XK_4, spawn, {.v = screenshoot}},
     {MODKEY, XK_d, spawn, {.v = roficmd}},
     {MODKEY, XK_Return, spawn, {.v = termcmd}},
     {MODKEY, XK_t, togglebar, {0}},

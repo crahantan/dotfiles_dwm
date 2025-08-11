@@ -67,7 +67,7 @@ pacman -S --noconfirm libx11 libxft libxinerama libxrandr libxext \
 # Instalar programas adicionales solicitados
 echo "### Instalando programas adicionales (dunst, rofi, pamixer, picom)..."
 pacman -S --noconfirm dunst rofi pamixer picom zathura zathura-pdf-poppler \
-    zathura-ps xfce4-power-manager xautolock
+    zathura-ps xfce4-power-manager xfce4-screenshooter 
 
 # Instalar utilidades adicionales útiles para un entorno dwm
 echo "### Instalando utilidades adicionales útiles..."
