@@ -4,26 +4,26 @@
 static const unsigned int borderpx = 4; /* border pixel of windows */
 static const unsigned int gappx = 20;   /* gaps between windows */
 static const unsigned int snap = 32;    /* snap pixel */
-static const int showbar = 0;           /* 0 means no bar */
+static const int showbar = 1;           /* 0 means no bar */
 static const int topbar = 0;            /* 0 means bottom bar */
 static const unsigned int stairpx = 10; /* depth of the stairs layout */
 static const int stairdirection = 1;    /* 0: left-aligned, 1: right-aligned */
 static const int stairsamesize =
     1; /* 1 means shrink all the staired windows to the same size */
-static const char *fonts[] = {"Mononoki Nerd Font:size=14"};
-static const char dmenufont[] = "Mononoki Nerd Font:size=14";
-static const char col_gray1[] = "#222222";
-static const char col_gray2[] = "#444444";
-static const char col_gray3[] = "#cccccc";
-static const char col_gray4[] = "#eeeeee";
-static const char col_main[] = "#60656f";
-static const char *colors[][3] = {
-    /*               fg         bg         border   */
-    [SchemeNorm] = {col_gray3, col_gray1, col_gray1},
-    [SchemeSel] = {col_gray4, col_main, col_gray2},
-    [SchemeTabActive] = {col_gray4, col_gray1, col_gray1},
-    [SchemeTabInactive] = {col_gray4, col_gray3, col_gray4}};
+static const char *fonts[] = {"JetBrainsMono Nerd Font:size=12"};
+static const char dmenufont[] = "JetBrainsMono Nerd Font:size=12";
+static const char col_bg[] = "#1a1b26";        // Tokyo Night background
+static const char col_bg_alt[] = "#24283b";    // Tokyo Night darker background
+static const char col_fg[] = "#c0caf5";        // Tokyo Night foreground
+static const char col_fg_bright[] = "#ffffff"; // Tokyo Night bright white
+static const char col_accent[] = "#7aa2f7";    // Tokyo Night blue accent
 
+static const char *colors[][3] = {
+    /*               fg           bg        border     */
+    [SchemeNorm] = {col_fg, col_bg, col_bg},
+    [SchemeSel] = {col_fg_bright, col_accent, col_bg_alt},
+    [SchemeTabActive] = {col_fg_bright, col_bg, col_bg},
+    [SchemeTabInactive] = {col_fg_bright, col_fg, col_fg_bright}};
 /* tagging */
 static const char *tags[] = {" ", " ", " ", " ", " ",
                              " ", " ", " ", " "};
@@ -39,8 +39,8 @@ static const Rule rules[] = {
 };
 
 /* layout(s) */
-static const float mfact = 0.7; /* factor of master area size [0.05..0.95] */
-static const int nmaster = 1;   /* number of clients in master area */
+static const float mfact = 0.55; /* factor of master area size [0.05..0.95] */
+static const int nmaster = 1;    /* number of clients in master area */
 static const int resizehints =
     1; /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen =
@@ -86,8 +86,8 @@ static const Layout layouts[] = {
 static char dmenumon[2] =
     "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = {
-    "dmenu_run", "-m",      dmenumon, "-fn",    dmenufont, "-nb",     col_gray1,
-    "-nf",       col_gray3, "-sb",    col_main, "-sf",     col_gray4, NULL};
+    "dmenu_run", "-m",   dmenumon, "-fn",      dmenufont, "-nb",         col_bg,
+    "-nf",       col_fg, "-sb",    col_accent, "-sf",     col_fg_bright, NULL};
 static const char *roficmd[] = {"rofi",
                                 "-combi-modi",
                                 "window,drun,run",
@@ -112,7 +112,7 @@ static const char *screenshoot[] = {"xfce4-screenshooter", "-f", NULL};
 
 static const Key keys[] = {
     /* modifier                     key        function        argument */
-    {MODKEY | ShiftMask, XK_4, spawn, {.v = screenshoot}},
+    {MODKEY | ShiftMask, XK_s, spawn, {.v = screenshoot}},
     {MODKEY, XK_d, spawn, {.v = roficmd}},
     {MODKEY, XK_Return, spawn, {.v = termcmd}},
     {MODKEY, XK_t, togglebar, {0}},
