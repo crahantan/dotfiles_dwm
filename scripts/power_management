@@ -1,0 +1,9 @@
+#!/bin/bash
+
+xset s off & # Disable screen saver
+xset -dpms & # Disable DPMS
+xset s noblank &# Disable screen blanking
+xfce4-power-manager & # Start XFCE power manager without daemon mode
+
+echo "Power management settings applied."
+

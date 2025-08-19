@@ -16,11 +16,11 @@ export AWT_TOOLKIT=MToolkit
 #monitors
 exec $HOME/.config/suckless/scripts/monitors &
 
+#powermanagement
+exec $HOME/.config/suckless/scripts/powermanagement &
+
 #nitrogen 
 exec nitrogen --restore &
-
-#xfce-power-manager
-exec xfce4-power-manager &
 
 #picom
 exec picom &
