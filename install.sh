@@ -1,16 +1,16 @@
 #!/bin/bash
 
-# Script de instalación de dwm, slstatus y slock en Fedora 42
+# Script de instalación de dwm, slstatus y slock en Arch Linux
 # Incluye todas las dependencias necesarias y programas adicionales
 
 # Mostrar mensaje de bienvenida
 echo "==================================================================="
-echo "     Instalación de dwm, slstatus y slock en Fedora 42 KDE"
+echo "     Instalación de dwm, slstatus y slock en Arch Linux"
 echo "==================================================================="
 echo "Este script instalará todas las dependencias necesarias y programas"
 echo "adicionales para tener un entorno dwm funcional."
 echo "Se instalarán: Xorg, componentes de desarrollo, dunst, rofi,"
-echo "pamixer, xcompmgr y otras utilidades."
+echo "pamixer, picom y otras utilidades."
 echo "==================================================================="
 echo ""
 
@@ -44,49 +44,110 @@ fi
 echo "Instalando para el usuario: $REAL_USER (Home: $USER_HOME)"
 echo ""
 
-# Actualizar el sistema
-echo "### Actualizando el sistema..."
-dnf -y update
+# Atualizar el sistema
+echo "¿Deseas actualizar el sistema? [s/N]"
+read -r respuesta
 
-# Instalar grupo de desarrollo y herramientas básicas
-echo "### Instalando herramientas de desarrollo..."
-dnf -y install git neovim wget curl make gcc gcc-c++
+if [[ "$respuesta" =~ ^[sS]$ ]]; then
+    echo "### Actualizando el sistema..."
+    sudo pacman -Syu --noconfirm
+else
+    echo "### Saltando actualización..."
+fi
 
-# Instalar Xorg y componentes necesarios
-echo "### Instalando Xorg y componentes necesarios..."
-dnf -y install xorg-x11-server-Xorg xorg-x11-xinit xorg-x11-xauth \
-    xorg-x11-drv-libinput xrdb xbacklight xorg-x11-fonts-misc \
-    xorg-x11-fonts-100dpi xorg-x11-fonts-75dpi xorg-x11-fonts-Type1 \
-    fontawesome-fonts fontawesome-fonts-web \
-    dejavu-sans-fonts dejavu-sans-mono-fonts dejavu-serif-fonts \
-    google-noto-sans-fonts google-noto-serif-fonts
+# Validación e instalción de paquetes
+echo "### Validación e Instalación de paquetes..."
 
-# Instalar librerías de desarrollo para dwm, slstatus y slock
-echo "### Instalando librerías de desarrollo..."
-dnf -y install libX11-devel libXft-devel libXinerama-devel libXrandr-devel \
-    libXext-devel freetype-devel fontconfig-devel imlib2-devel \
-    pam-devel harfbuzz-devel libXrender-devel \
-		gtk2-devel gtk3-devel gtk4-devel glib2-devel pango-devel cairo-devel \
-    atk-devel gdk-pixbuf2-devel
+set -e
 
-# Instalar programas adicionales solicitados
-echo "### Instalando programas adicionales (dunst, rofi, pamixer, xcompmgr)..."
-dnf -y install dunst rofi pamixer xcompmgr zathura zathura-pdf-poppler \
-	zathura-ps xfce4-power-manager xautolock picom
+# --------------------------
+# Listas de paquetes
+# --------------------------
 
-# Instalar utilidades adicionales útiles para un entorno dwm
-echo "### Instalando utilidades adicionales útiles..."
-dnf -y install feh nitrogen lxappearance pcmanfm alacritty \
-    dmenu unclutter maim slop xclip xsel redshift kitty\
-    NetworkManager-tui alsa-utils volumeicon \
-    notification-daemon arandr scrot lxrandr
+# Paquetes de repos oficiales
+official_packages=(
+  # Herramientas de desarrollo
+  base-devel git neovim wget curl
+
+  # Xorg y componentes
+  xorg-xinit xorg-xauth xf86-input-libinput
+  xorg-xrdb xorg-xbacklight xorg-fonts-misc 
+  ttf-dejavu ttf-liberation noto-fonts noto-fonts-emoji
+
+  # Librerías de desarrollo
+  libx11 libxft libxinerama libxrandr libxext
+  freetype2 fontconfig imlib2 pam harfbuzz libxrender
+  gtk2 gtk3 gtk4 glib2 pango cairo gdk-pixbuf2
+
+  # Programas adicionales
+  dunst rofi pamixer picom zathura zathura-cb
+  zathura-pdf-mupdf zathura-cb
+
+  # Utilidades
+  feh nitrogen lxappearance pcmanfm dmenu unclutter maim slop xclip xsel redshift kitty
+  networkmanager alsa-utils volumeicon notification-daemon arandr scrot lxrandr
+)
+
+# Paquetes que están en AUR
+aur_packages=(
+  xautolock
+  # Aquí puedes agregar nuevos paquetes de AUR en el futuro
+)
+
+# --------------------------
+# Funciones
+# --------------------------
+
+install_official() {
+  for pkg in "${official_packages[@]}"; do
+    if pacman -Si "$pkg" &>/dev/null; then
+      if pacman -Qi "$pkg" &>/dev/null; then
+        echo "✅ $pkg ya está instalado (repos oficiales)"
+      else
+        echo "⚠️  $pkg existe pero NO está instalado → Instalando..."
+        pacman -S --noconfirm --needed "$pkg"
+      fi
+    else
+      echo "❌ $pkg no existe en repos oficiales"
+    fi
+  done
+}
+
+install_aur() {
+  for pkg in "${aur_packages[@]}"; do
+    if pacman -Qi "$pkg" &>/dev/null || yay -Qi "$pkg" &>/dev/null; then
+      echo "✅ $pkg ya está instalado (AUR o repos)"
+    else
+      # Verificar si existe en AUR
+      if yay -Ss "^$pkg$" &>/dev/null; then
+        echo "⚠️  $pkg existe en AUR pero no está instalado → Instalando..."
+        yay -S --noconfirm --needed "$pkg"
+      else
+        echo "❌ $pkg no se encontró en AUR"
+      fi
+    fi
+  done
+}
+
+# --------------------------
+# Ejecución
+# --------------------------
+
+echo "### Instalando paquetes de repos oficiales..."
+install_official
+
+echo "### Instalando paquetes de AUR..."
+install_aur
+
+echo -e "\n Todos los paquetes revisados e instalados."
+
 
 # Crear directorios para los códigos fuente
 echo "### Creando directorios para los códigos fuente..."
 mkdir -p $USER_HOME/.config/suckless
 
 # Asegurarnos que los permisos son correctos
-chown -R $USERNAME:$USERNAME $USER_HOME/.config
+chown -R $REAL_USER:$REAL_USER $USER_HOME/.config
 
 # Copiamos directorios config
 cp -rf ./config $USER_HOME/.config/suckless/
@@ -97,7 +158,6 @@ cp -rf ./slock $USER_HOME/.config/suckless/
 cp -rf ./slstatus $USER_HOME/.config/suckless/
 
 # Copiar archivos de configuración a .config
-cp -rf $USER_HOME/.config/suckless/config/alacritty $USER_HOME/.config/
 cp -rf $USER_HOME/.config/suckless/config/dunst $USER_HOME/.config/
 cp -rf $USER_HOME/.config/suckless/config/kitty $USER_HOME/.config/
 cp -rf $USER_HOME/.config/suckless/config/ranger $USER_HOME/.config/
@@ -105,31 +165,30 @@ cp -rf $USER_HOME/.config/suckless/config/rofi $USER_HOME/.config/
 cp -rf $USER_HOME/.config/suckless/config/zathura $USER_HOME/.config/
 cp -rf $USER_HOME/.config/suckless/config/picom $USER_HOME/.config/
 
-# Compilar e instalar dwm
+# Cambiar temporalmente al usuario para compilar
 echo "### Compilando e instalando dwm..."
 cd $USER_HOME/.config/suckless/dwm
+sudo -u $REAL_USER make
 make install clean
 
-# Compilar e instalar slstatus
 echo "### Compilando e instalando slstatus..."
 cd $USER_HOME/.config/suckless/slstatus
+sudo -u $REAL_USER make
 make install clean
 
-# Compilar e instalar slock
 echo "### Compilando e instalando slock..."
 cd $USER_HOME/.config/suckless/slock
+sudo -u $REAL_USER make
 make install clean
 
-#Copiar archivos de configuración de alacritty dunst rofi zathura
-echo "### Compiando configuraciones alacritty dunst rofi zathura..."
-cp -rf $USER_HOME/.config/suckless/config/alacritty ~/.config/
-cp -rf $USER_HOME/.config/suckless/config/dunst ~/.config/
-cp -rf $USER_HOME/.config/suckless/config/rofi ~/.config/
-cp -rf $USER_HOME/.config/suckless/config/zathura ~/.config/
+# Copiar archivos de configuración de aplicaciones
+echo "### Copiando configuraciones de aplicaciones..."
+cp -rf $USER_HOME/.config/suckless/config/dunst $USER_HOME/.config/
+cp -rf $USER_HOME/.config/suckless/config/rofi $USER_HOME/.config/
+cp -rf $USER_HOME/.config/suckless/config/zathura $USER_HOME/.config/
 
 # Asegurarnos que los permisos son correctos
-chown -R $USERNAME:$USERNAME $USER_HOME/.config
-
+chown -R $REAL_USER:$REAL_USER $USER_HOME/.config
 
 # Crear entrada de escritorio para el gestor de inicio de sesión
 echo "### Creando entrada para el gestor de inicio de sesión..."
@@ -138,11 +197,21 @@ cat > /usr/share/xsessions/dwm.desktop << EOF
 Encoding=UTF-8
 Name=dwm
 Comment=Dynamic Window Manager
-Exec=${USER_HOME}/.config/suckless/config/dwm
+Exec=${USER_HOME}/.config/suckless/scripts/dwm
 Icon=dwm
 Type=Application
 EOF
 
+# Verificar si yay está instalado para AUR (opcional)
+if ! command -v yay &> /dev/null; then
+    echo "### Instalando yay (AUR helper) - opcional..."
+    cd /tmp
+    sudo -u $REAL_USER git clone https://aur.archlinux.org/yay.git
+    cd yay
+    sudo -u $REAL_USER makepkg -si --noconfirm
+    cd ..
+    rm -rf yay
+fi
 
 echo "==================================================================="
 echo "¡Instalación completada!"
@@ -154,9 +223,12 @@ echo ""
 echo "O simplemente ejecuta 'startx' si no estás usando un gestor de inicio de sesión."
 echo ""
 echo "Archivos importantes:"
-echo "- Script de inicio: $USER_HOME/.config/suckless/config/dwm_start"
+echo "- Script de inicio: $USER_HOME/.config/suckless/scripts/dwm_start"
 echo "- Configuración dwm: $USER_HOME/.config/suckless/dwm/config.h"
 echo "- Configuración slstatus: $USER_HOME/.config/suckless/slstatus/config.h"
+echo ""
+echo "También se ha instalado yay para acceder a paquetes del AUR si necesitas"
+echo "software adicional."
 echo ""
 echo "Recuerda que puedes personalizar dwm, slstatus y slock editando sus"
 echo "archivos de configuración (config.h) y recompilando."

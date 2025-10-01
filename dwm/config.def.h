@@ -12,11 +12,19 @@ static const int stairsamesize =
     1; /* 1 means shrink all the staired windows to the same size */
 static const char *fonts[] = {"JetBrainsMono Nerd Font:size=12"};
 static const char dmenufont[] = "JetBrainsMono Nerd Font:size=12";
-static const char col_bg[] = "#1a1b26";        // Tokyo Night background
-static const char col_bg_alt[] = "#24283b";    // Tokyo Night darker background
-static const char col_fg[] = "#c0caf5";        // Tokyo Night foreground
-static const char col_fg_bright[] = "#ffffff"; // Tokyo Night bright white
-static const char col_accent[] = "#7aa2f7";    // Tokyo Night blue accent
+// Tokyo night theme
+// static const char col_bg[] = "#1a1b26";        // Tokyo Night background
+// static const char col_bg_alt[] = "#24283b";    // Tokyo Night darker
+// background static const char col_fg[] = "#c0caf5";        // Tokyo Night
+// foreground static const char col_fg_bright[] = "#ffffff"; // Tokyo Night
+// bright white static const char col_accent[] = "#7aa2f7"; // Tokyo Night blue
+// accent
+// Grey light theme
+static const char col_bg[] = "#f4f4f5";        // Fondo gris muy claro
+static const char col_bg_alt[] = "#e5e7eb";    // Fondo alterno gris suave
+static const char col_fg[] = "#374151";        // Texto gris oscuro
+static const char col_fg_bright[] = "#111827"; // Texto negro grisáceo
+static const char col_accent[] = "#3b82f6";    // Azul brillante
 
 static const char *colors[][3] = {
     /*               fg           bg        border     */

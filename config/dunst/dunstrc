@@ -90,8 +90,7 @@
     frame_width = 2
 
     # Defines color of the frame around the notification window.
-    frame_color = "#54546d"
-
+    frame_color = "#d1d5db"
     # Size of gap to display between notifications - requires a compositor.
     # If value is greater than 0, separator_height will be ignored and a border
     # of size frame_width will be drawn around each notification instead.
@@ -196,7 +195,7 @@
     enable_recursive_icon_lookup = true
 
     # Set icon theme (only used for recursive icon lookup)
-    icon_theme = breeze
+    icon_theme = Mint-Y-Grey 
     # You can also set multiple icon themes, with the leftmost one being used first.
     # icon_theme = "Adwaita, breeze"
 
@@ -212,7 +211,7 @@
     max_icon_size = 96
 
     # Paths to default icons (only neccesary when not using recursive icon lookup)
-    icon_path = /usr/share/icons/Yaru/status/16@2x/:/usr/share/icons/Yaru/devices/16@2x/
+    icon_path = /usr/share/icons/Mint-Y-Grey/places/16@2x/
 
     ### History ###
 
@@ -229,7 +228,7 @@
     dmenu = /usr/bin/dmenu -p dunst:
 
     # Browser for opening urls in context menu.
-    browser = /usr/bin/surf
+    browser = /usr/bin/librewolf
 
     # Always run rule-defined scripts, even if the notification is suppressed
     always_run_script = true
