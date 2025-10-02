@@ -27,13 +27,13 @@
     width = 450
 
     # The maximum height of a single notification, excluding the frame.
-    height = 200
+    height = (0,200)
 
     # Position the notification in the top right corner
     origin = top-right
 
     # Offset from the origin
-    offset = 30x30
+    offset = (30,30)
 
     # Scale factor. It is auto-detected if value is 0.
     scale = 0
@@ -305,28 +305,23 @@
 
 
 [urgency_low]
-    # IMPORTANT: colors have to be defined in quotation marks.
-    # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#16161d"
-    foreground = "#dcd7ba"
-    frame_color = "#54546d"
+    background = "#f4f7fb"      
+    foreground = "#2e3440"      
+    frame_color = "#a5c8e1"     
     timeout = 10
-    # Icon for notifications with low urgency, uncomment to enable
-    #default_icon = /path/to/icon
 
 [urgency_normal]
-    background = "#1f1f28"
-    foreground = "#dcd7ba"
-    highlight = "#7e9cd8"
+    background = "#e9f2fa"      
+    foreground = "#2e3440"      
+    highlight = "#5fa8d3"       
     timeout = 10
-    # Icon for notifications with normal urgency, uncomment to enable
     #default_icon = /path/to/icon
 
 [urgency_critical]
-    background = "#c34043"
-    foreground = "#dcd7ba"
-    frame_color = "#ff9e3b"
-    timeout = 0
+    background = "#fbe4e6"      
+    foreground = "#2e3440"      
+    frame_color = "#e06666"     
+    timeout = 10
 
 [brightness]
   summary = " Light"

@@ -30,6 +30,7 @@ exec picom &
 
 #dunst
 exec dunst &
+exec mpris-notifier &
 
 #dwm reload
 while true; do
