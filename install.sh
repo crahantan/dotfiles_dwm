@@ -2,6 +2,14 @@
 
 # Script de instalación de dwm, slstatus y slock en Arch Linux
 # Incluye todas las dependencias necesarias y programas adicionales
+#
+
+# Colores ANSI
+GREEN="\e[32m"
+YELLOW="\e[33m"
+RED="\e[31m"
+RESET="\e[0m"
+BOLD="\e[1m"
 
 # Mostrar mensaje de bienvenida
 echo "==================================================================="
@@ -58,8 +66,6 @@ fi
 # Validación e instalción de paquetes
 echo "### Validación e Instalación de paquetes..."
 
-set -e
-
 # --------------------------
 # Listas de paquetes
 # --------------------------
@@ -91,7 +97,7 @@ official_packages=(
 # Paquetes que están en AUR
 aur_packages=(
   xautolock
-  # Aquí puedes agregar nuevos paquetes de AUR en el futuro
+  # Nuevos paquetes de AUR en el futuro
 )
 
 # --------------------------
@@ -99,34 +105,57 @@ aur_packages=(
 # --------------------------
 
 install_official() {
+  local installed=()
+  local missing=()
+  local not_found=()
+
   for pkg in "${official_packages[@]}"; do
     if pacman -Si "$pkg" &>/dev/null; then
       if pacman -Qi "$pkg" &>/dev/null; then
-        echo "✅ $pkg ya está instalado (repos oficiales)"
+        installed+=("$pkg")
       else
-        echo "⚠️  $pkg existe pero NO está instalado → Instalando..."
-        pacman -S --noconfirm --needed "$pkg"
+        missing+=("$pkg")
       fi
     else
-      echo "❌ $pkg no existe en repos oficiales"
+      not_found+=("$pkg")
     fi
   done
+
+	echo -e "${BOLD}${GREEN}=>${RESET} Paquetes ya instalados (${#installed[@]}): ${installed[*]}"
+	echo -e "${BOLD}${YELLOW}=>${RESET} Paquetes faltantes (${#missing[@]}): ${missing[*]}"
+	echo -e "${BOLD}${RED}=>${RESET} No encontrados (${#not_found[@]}): ${not_found[*]}"
+
+  if [ ${#missing[@]} -gt 0 ]; then
+    echo -e "\n→ Instalando paquetes faltantes..."
+    sudo pacman -S --noconfirm --needed "${missing[@]}"
+  fi
 }
 
 install_aur() {
+  local installed=()
+  local missing=()
+  local not_found=()
+
   for pkg in "${aur_packages[@]}"; do
     if pacman -Qi "$pkg" &>/dev/null || yay -Qi "$pkg" &>/dev/null; then
-      echo "✅ $pkg ya está instalado (AUR o repos)"
+      installed+=("$pkg")
     else
-      # Verificar si existe en AUR
       if yay -Ss "^$pkg$" &>/dev/null; then
-        echo "⚠️  $pkg existe en AUR pero no está instalado → Instalando..."
-        yay -S --noconfirm --needed "$pkg"
+        missing+=("$pkg")
       else
-        echo "❌ $pkg no se encontró en AUR"
+        not_found+=("$pkg")
       fi
     fi
   done
+
+	echo -e "${BOLD}${GREEN}=>${RESET} Paquetes AUR ya instalados (${#installed[@]}): ${installed[*]}"
+	echo -e "${BOLD}${YELLOW}=>${RESET} Paquetes AUR faltantes (${#missing[@]}): ${missing[*]}"
+	echo -e "${BOLD}${RED}=>${RESET} Paquetes AUR no encontrados (${#not_found[@]}): ${not_found[*]}" 
+
+  if [ ${#missing[@]} -gt 0 ]; then
+    echo -e "\n→ Instalando paquetes AUR faltantes..."
+    yay -S --noconfirm --needed "${missing[@]}"
+  fi
 }
 
 # --------------------------
@@ -136,11 +165,10 @@ install_aur() {
 echo "### Instalando paquetes de repos oficiales..."
 install_official
 
-echo "### Instalando paquetes de AUR..."
+echo -e "\n### Instalando paquetes de AUR..."
 install_aur
 
-echo -e "\n Todos los paquetes revisados e instalados."
-
+echo -e "\n${BOLD}${GREEN}=>${RESET} Todos los paquetes revisados e instalados correctamente."
 
 # Crear directorios para los códigos fuente
 echo "### Creando directorios para los códigos fuente..."
@@ -156,6 +184,7 @@ cp -rf ./patches $USER_HOME/.config/suckless/
 cp -rf ./dwm $USER_HOME/.config/suckless/
 cp -rf ./slock $USER_HOME/.config/suckless/
 cp -rf ./slstatus $USER_HOME/.config/suckless/
+echo "### Directorios copiados a suckless."
 
 # Copiar archivos de configuración a .config
 cp -rf $USER_HOME/.config/suckless/config/dunst $USER_HOME/.config/
@@ -164,6 +193,7 @@ cp -rf $USER_HOME/.config/suckless/config/ranger $USER_HOME/.config/
 cp -rf $USER_HOME/.config/suckless/config/rofi $USER_HOME/.config/
 cp -rf $USER_HOME/.config/suckless/config/zathura $USER_HOME/.config/
 cp -rf $USER_HOME/.config/suckless/config/picom $USER_HOME/.config/
+echo "### Configuraciones copiadas a .config."
 
 # Cambiar temporalmente al usuario para compilar
 echo "### Compilando e instalando dwm..."
