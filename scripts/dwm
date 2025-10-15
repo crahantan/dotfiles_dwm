@@ -6,34 +6,34 @@ if which dbus-launch >/dev/null && test -z "$DBUS_SESSION_BUS_ADDRESS"; then
 fi
 
 #xautolock
-exec xautolock -time 60 -locker slock &
+exec /usr/bin/xautolock -time 60 -locker slock &
 
 #slstatus
-exec slstatus &
+exec /usr/local/bin/slstatus &
 
 #java-dwm
 export _JAVA_AWT_WM_NONREPARENTING=1
 export AWT_TOOLKIT=MToolkit	
 
 #powermanagement
-exec xfce4-power-manager &
+exec /usr/bin/xfce4-power-manager &
 
 # Iniciar el Gestor de Ajustes de Xfce (xfsettingsd)
 # Esto se encarga de la configuración del teclado, temas, etc.
-exec xfsettingsd &
+#exec /usr/bin/xfsettingsd &
 
 #xfce4-screensaver
-exec xfce4-screensaver &
+exec /usr/bin/xfce4-screensaver &
 
 #nitrogen 
-exec nitrogen --restore &
+exec /usr/bin/nitrogen --restore &
 
 #picom
-exec picom &
+exec /usr/bin/picom &
 
 #dunst
-exec dunst &
-exec mpris-notifier &
+exec /usr/bin/dunst &
+exec /usr/bin/mpris-notifier &
 
 #dwm reload
 while true; do
