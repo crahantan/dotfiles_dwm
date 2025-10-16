@@ -20,7 +20,7 @@ exec /usr/bin/xfce4-power-manager &
 
 # Iniciar el Gestor de Ajustes de Xfce (xfsettingsd)
 # Esto se encarga de la configuración del teclado, temas, etc.
-exec /usr/bin/xfsettingsd &
+#exec /usr/bin/xfsettingsd &
 
 #xfce4-screensaver
 exec /usr/bin/xfce4-screensaver &
@@ -33,7 +33,12 @@ exec /usr/bin/picom &
 
 #dunst
 exec /usr/bin/dunst &
+
+# mpris
 exec /usr/bin/mpris-notifier &
+
+# setxkbmap
+exec /usr/bin/setxkbmap latam &
 
 #dwm reload
 while true; do
