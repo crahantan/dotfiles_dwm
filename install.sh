@@ -91,7 +91,7 @@ official_packages=(
 
   # Utilidades
   feh nitrogen lxappearance pcmanfm dmenu unclutter maim slop xclip xsel redshift kitty
-  networkmanager alsa-utils volumeicon notification-daemon arandr scrot lxrandr
+  networkmanager alsa-utils volumeicon notification-daemon arandr scrot lxrandr spectacle
 )
 
 # Paquetes que están en AUR
