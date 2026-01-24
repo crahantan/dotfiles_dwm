@@ -20,11 +20,17 @@ static const char dmenufont[] = "JetBrainsMono Nerd Font:size=12";
 // bright white static const char col_accent[] = "#7aa2f7"; // Tokyo Night blue
 // accent
 // Grey light theme
-static const char col_bg[] = "#f4f4f5";        // Fondo gris muy claro
-static const char col_bg_alt[] = "#e5e7eb";    // Fondo alterno gris suave
-static const char col_fg[] = "#374151";        // Texto gris oscuro
-static const char col_fg_bright[] = "#111827"; // Texto negro grisáceo
-static const char col_accent[] = "#3b82f6";    // Azul brillante
+// static const char col_bg[] = "#f4f4f5";        // Fondo gris muy claro
+// static const char col_bg_alt[] = "#e5e7eb";    // Fondo alterno gris suave
+// static const char col_fg[] = "#374151";        // Texto gris oscuro
+// static const char col_fg_bright[] = "#111827"; // Texto negro grisáceo
+// static const char col_accent[] = "#3b82f6";    // Azul brillante
+// Dark solid theme
+static const char col_bg[] = "#1a1a1a";        // Fondo negro sólido
+static const char col_bg_alt[] = "#262626";    // Fondo alterno gris muy oscuro
+static const char col_fg[] = "#d4d4d8";        // Texto gris claro
+static const char col_fg_bright[] = "#f4f4f5"; // Texto blanco grisáceo
+static const char col_accent[] = "#3b82f6";    // Azul brillante (mantenido)
 
 static const char *colors[][3] = {
     /*               fg           bg        border     */
