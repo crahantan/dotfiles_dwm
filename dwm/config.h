@@ -113,7 +113,7 @@ static const char *roficmd[] = {"rofi",
                                 "Papirus",
                                 "-show-icons",
                                 NULL};
-static const char *termcmd[] = {"kitty", NULL};
+static const char *termcmd[] = {"ghostty", NULL};
 static const char *volumeUp[] = {"pamixer",     "-i",  "5", "--allow-boost",
                                  "--set-limit", "130", NULL};
 static const char *volumeDown[] = {"pamixer", "-d", "5", NULL};

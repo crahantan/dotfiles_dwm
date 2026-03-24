@@ -92,6 +92,7 @@ official_packages=(
   # Utilidades
   feh nitrogen lxappearance pcmanfm dmenu unclutter maim slop xclip xsel redshift kitty
   networkmanager alsa-utils volumeicon notification-daemon arandr scrot lxrandr spectacle
+	ghostty
 )
 
 # Paquetes que están en AUR
@@ -189,6 +190,7 @@ echo "### Directorios copiados a suckless."
 # Copiar archivos de configuración a .config
 cp -rf $USER_HOME/.config/suckless/config/dunst $USER_HOME/.config/
 cp -rf $USER_HOME/.config/suckless/config/kitty $USER_HOME/.config/
+cp -rf $USER_HOME/.config/suckless/config/ghostty $USER_HOME/.config/
 cp -rf $USER_HOME/.config/suckless/config/ranger $USER_HOME/.config/
 cp -rf $USER_HOME/.config/suckless/config/rofi $USER_HOME/.config/
 cp -rf $USER_HOME/.config/suckless/config/zathura $USER_HOME/.config/
