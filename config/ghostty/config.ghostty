@@ -1,3 +1,5 @@
 window-decoration = false
 window-padding-balance = true
 background-opacity = 1.0
+font-family = "jetbrains mono nerd font
+gtk-tabs-location = bottom
