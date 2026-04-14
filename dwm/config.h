@@ -6,7 +6,7 @@ static const unsigned int gappx = 10;   /* gaps between windows */
 static const unsigned int snap = 32;    /* snap pixel */
 static const int rmaster =
     1; /* 1 means master-area is initially on the right */
-static const int showbar = 1;           /* 0 means no bar */
+static const int showbar = 0;           /* 0 means no bar */
 static const int topbar = 0;            /* 0 means bottom bar */
 static const unsigned int stairpx = 10; /* depth of the stairs layout */
 static const int stairdirection = 0;    /* 0: left-aligned, 1: right-aligned */
