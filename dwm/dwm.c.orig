@@ -154,7 +154,6 @@ struct Monitor {
   unsigned int seltags;
   unsigned int sellt;
   unsigned int tagset[2];
-  int rmaster;
   int showbar;
   int topbar;
   Client *clients;
@@ -248,7 +247,6 @@ static void tagmon(const Arg *arg);
 static void tile(Monitor *m);
 static void togglebar(const Arg *arg);
 static void togglefloating(const Arg *arg);
-static void togglermaster(const Arg *arg);
 static void toggletag(const Arg *arg);
 static void toggleview(const Arg *arg);
 static void unfocus(Client *c, int setfocus);
@@ -577,15 +575,15 @@ void buttonpress(XEvent *e) {
   }
   if (ev->window == selmon->barwin) {
     i = x = 0;
-    unsigned int occ = 0;
-    for (c = m->clients; c; c = c->next)
-      occ |= c->tags == TAGMASK ? 0 : c->tags;
-    do {
-      /* Do not reserve space for vacant tags */
-      if (!(occ & 1 << i || m->tagset[m->seltags] & 1 << i))
-        continue;
+		unsigned int occ = 0;
+		for(c = m->clients; c; c=c->next)
+			occ |= c->tags == TAGMASK ? 0 : c->tags;
+		do {
+			/* Do not reserve space for vacant tags */
+			if (!(occ & 1 << i || m->tagset[m->seltags] & 1 << i))
+				continue;
       x += TEXTW(tags[i]);
-    } while (ev->x >= x && ++i < LENGTH(tags));
+		} while (ev->x >= x && ++i < LENGTH(tags));
     if (i < LENGTH(tags)) {
       click = ClkTagBar;
       arg.ui = 1 << i;
@@ -778,7 +776,6 @@ Monitor *createmon(void) {
   m->tagset[0] = m->tagset[1] = 1;
   m->mfact = mfact;
   m->nmaster = nmaster;
-  m->rmaster = rmaster;
   m->showbar = showbar;
   m->topbar = topbar;
   m->gappx = gappx;
@@ -835,8 +832,8 @@ Monitor *dirtomon(int dir) {
 
 void drawbar(Monitor *m) {
   int x, w, tw = 0;
-  // int boxs = drw->fonts->h / 9;
-  // int boxw = drw->fonts->h / 6 + 2;
+  //int boxs = drw->fonts->h / 9;
+  //int boxw = drw->fonts->h / 6 + 2;
   unsigned int i, occ = 0, urg = 0;
   Client *c;
 
@@ -851,15 +848,15 @@ void drawbar(Monitor *m) {
   }
 
   for (c = m->clients; c; c = c->next) {
-    occ |= c->tags == TAGMASK ? 0 : c->tags;
+		occ |= c->tags == TAGMASK ? 0 : c->tags;
     if (c->isurgent)
       urg |= c->tags;
   }
   x = 0;
   for (i = 0; i < LENGTH(tags); i++) {
-    /* Do not draw vacant tags */
-    if (!(occ & 1 << i || m->tagset[m->seltags] & 1 << i))
-      continue;
+		/* Do not draw vacant tags */
+		if(!(occ & 1 << i || m->tagset[m->seltags] & 1 << i))
+			continue;
     w = TEXTW(tags[i]);
     drw_setscheme(
         drw, scheme[m->tagset[m->seltags] & 1 << i ? SchemeSel : SchemeNorm]);
@@ -1172,8 +1169,8 @@ void manage(Window w, XWindowAttributes *wa) {
   updatewindowtype(c);
   updatesizehints(c);
   updatewmhints(c);
-  c->x = c->mon->mx + (c->mon->mw - WIDTH(c)) / 2;
-  c->y = c->mon->my + (c->mon->mh - HEIGHT(c)) / 2;
+	c->x = c->mon->mx + (c->mon->mw - WIDTH(c)) / 2;
+	c->y = c->mon->my + (c->mon->mh - HEIGHT(c)) / 2;
   XSelectInput(dpy, w,
                EnterWindowMask | FocusChangeMask | PropertyChangeMask |
                    StructureNotifyMask);
@@ -1768,15 +1765,14 @@ void stairs(Monitor *m) {
     return;
 
   if (n > m->nmaster)
-    mw = m->nmaster ? m->ww * (m->rmaster ? 1.0 - m->mfact : m->mfact) : 0;
+    mw = m->nmaster ? m->ww * m->mfact : 0;
   else
     mw = m->ww;
 
   for (i = my = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), i++) {
     if (i < m->nmaster) {
       h = (m->wh - my) / (MIN(n, m->nmaster) - i);
-      resize(c, m->rmaster ? m->wx + m->ww - mw : m->wx, m->wy + my,
-             mw - (2 * c->bw), h - (2 * c->bw), 0);
+      resize(c, m->wx, m->wy + my, mw - (2 * c->bw), h - (2 * c->bw), 0);
       if (my + HEIGHT(c) < m->wh)
         my += HEIGHT(c);
     } else {
@@ -1784,8 +1780,8 @@ void stairs(Monitor *m) {
       ox = stairdirection ? n - i - 1 : (stairsamesize ? i - m->nmaster : 0);
       ow = stairsamesize ? n - m->nmaster - 1 : n - i - 1;
       oh = stairsamesize ? ow : i - m->nmaster;
-      resize(c, (m->rmaster ? m->wx : m->wx + mw) + (ox * stairpx),
-             m->wy + (oy * stairpx), m->ww - mw - (2 * c->bw) - (ow * stairpx),
+      resize(c, m->wx + mw + (ox * stairpx), m->wy + (oy * stairpx),
+             m->ww - mw - (2 * c->bw) - (ow * stairpx),
              m->wh - (2 * c->bw) - (oh * stairpx), 0);
     }
   }
@@ -1822,17 +1818,14 @@ void tile(Monitor *m) {
        c = nexttiled(c->next), i++)
     if (i < m->nmaster) {
       h = (m->wh - my) / (MIN(n, m->nmaster) - i) - m->gappx;
-      resize(c, m->rmaster ? m->wx + m->ww - mw + m->gappx : m->wx + m->gappx,
-             m->wy + my,
-             mw - (2 * c->bw) - (m->rmaster ? 2 * m->gappx : m->gappx),
+      resize(c, m->wx + m->gappx, m->wy + my, mw - (2 * c->bw) - m->gappx,
              h - (2 * c->bw), 0);
       if (my + HEIGHT(c) + m->gappx < m->wh)
         my += HEIGHT(c) + m->gappx;
     } else {
       h = (m->wh - ty) / (n - i) - m->gappx;
-      resize(c, m->rmaster ? m->wx + m->gappx : m->wx + mw + m->gappx,
-             m->wy + ty, m->ww - mw - (2 * c->bw) - 2 * m->gappx,
-             h - (2 * c->bw), 0);
+      resize(c, m->wx + mw + m->gappx, m->wy + ty,
+             m->ww - mw - (2 * c->bw) - 2 * m->gappx, h - (2 * c->bw), 0);
       if (ty + HEIGHT(c) + m->gappx < m->wh)
         ty += HEIGHT(c) + m->gappx;
     }
@@ -1856,14 +1849,6 @@ void togglefloating(const Arg *arg) {
     resize(selmon->sel, selmon->sel->x, selmon->sel->y, selmon->sel->w,
            selmon->sel->h, 0);
   arrange(selmon);
-}
-
-void togglermaster(const Arg *arg) {
-  selmon->rmaster = !selmon->rmaster;
-  /* now mfact represents the left factor */
-  selmon->mfact = 1.0 - selmon->mfact;
-  if (selmon->lt[selmon->sellt]->arrange)
-    arrange(selmon);
 }
 
 void toggletag(const Arg *arg) {
