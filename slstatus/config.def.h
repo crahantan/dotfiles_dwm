@@ -70,16 +70,15 @@ static const struct arg args[] = {
     {datetime, "%s", "    %d %b %Y |  󰥔  %H:%M Hrs"},
     {ipv4, " |  󰖂  %s", "proton0"},
     {ipv4, " |    %s", "docker0"},
-    {ipv4, " |    %s", "wlo1"},
-    {ipv4, " |  󰛳  %s", "enp4s0"},
-    {netspeed_rx, " |   %s", "enp4s0"},
-    {netspeed_tx, " |   %s", "enp4s0"},
+    {ipv4, " |    %s", "wlan0"},
+    {netspeed_rx, " |   %s", "wlan0"},
+    {netspeed_tx, " |   %s", "wlan0"},
     {disk_perc, " |   %s%%", "/"},
     {ram_perc, " |   %s%%", NULL},
     {cpu_perc, " |   %s%%", NULL},
     {alsa_master_vol, " |   %s", NULL},
 
     // batery
-    // {battery_perc, " |   %s%%", "BAT0"},
+    {battery_perc, " |   %s%%", "BAT0"},
 
 };

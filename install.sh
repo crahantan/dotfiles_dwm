@@ -73,8 +73,7 @@ echo "### Validación e Instalación de paquetes..."
 # Paquetes de repos oficiales
 official_packages=(
   # Herramientas de desarrollo
-  base-devel git neovim wget curl
-
+  base-devel git neovim wget curl rust go
   # Xorg y componentes
   xorg-xinit xorg-xauth xf86-input-libinput
   xorg-xrdb xorg-xbacklight xorg-fonts-misc 
@@ -98,7 +97,14 @@ official_packages=(
 # Paquetes que están en AUR
 aur_packages=(
   xautolock
-  # Nuevos paquetes de AUR en el futuro
+	nitrogen-git
+	paru
+	nvm
+)
+
+# cargo aur_packages
+cargo_packages=(
+	mpris-notifier
 )
 
 # --------------------------
@@ -159,6 +165,40 @@ install_aur() {
   fi
 }
 
+install_rust() {
+	local LINE='export PATH="$PATH:$HOME/.cargo/bin"'
+  local -a installed=()
+  local -a missing=()
+    
+  export PATH="$HOME/.cargo/bin:$PATH"
+
+  if ! grep -Fxq "$LINE" "$HOME/.bashrc"; then
+      echo -e "\n# Rust/Cargo\n$LINE" >> "$HOME/.bashrc"
+      echo "PATH de Cargo agregado a .bashrc"
+  else
+      echo "El PATH de Cargo ya existe en .bashrc"
+  fi
+
+  for pkg in "${cargo_packages[@]}"; do
+      if cargo install --list | grep -q "^$pkg v"; then
+          installed+=("$pkg")
+      else
+          missing+=("$pkg")
+      fi
+  done
+
+  echo -e "${BOLD}${GREEN}=>${RESET} Instalados (${#installed[@]}): ${installed[*]}"
+  echo -e "${BOLD}${YELLOW}=>${RESET} Por instalar (${#missing[@]}): ${missing[*]}"
+
+  if [ ${#missing[@]} -gt 0 ]; then
+      echo -e "\n→ Instalando paquetes faltantes..."
+      for pkg in "${missing[@]}"; do
+          echo -e "Instalando: $pkg"
+          cargo install "$pkg"
+      done
+  fi
+}
+
 # --------------------------
 # Ejecución
 # --------------------------
@@ -170,6 +210,8 @@ echo -e "\n### Instalando paquetes de AUR..."
 install_aur
 
 echo -e "\n${BOLD}${GREEN}=>${RESET} Todos los paquetes revisados e instalados correctamente."
+
+	echo "### Instalando Paquetes de Rust..."
 
 # Crear directorios para los códigos fuente
 echo "### Creando directorios para los códigos fuente..."

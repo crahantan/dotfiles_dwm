@@ -121,6 +121,8 @@ static const char *volumeUp[] = {"pamixer",     "-i",  "5", "--allow-boost",
 static const char *volumeDown[] = {"pamixer", "-d", "5", NULL};
 static const char *volumeMute[] = {"pamixer", "-m", NULL};
 static const char *volumeUnMute[] = {"pamixer", "-u", NULL};
+static const char *brightUp[] = {"brightnessctl", "set", "+10%", NULL};
+static const char *brightDown[] = {"brightnessctl", "set", "10%-", NULL};
 static const char *screenshoot[] = {"spectacle", "-r", NULL};
 
 #include "../patches/dwm/shifttag.c"
@@ -167,10 +169,12 @@ static const Key keys[] = {
     {MODKEY, XK_plus, setgaps, {.i = +1}},
     {MODKEY | ShiftMask, XK_equal, setgaps, {.i = 0}},
     {MODKEY | ShiftMask, XK_f, fullscreen, {0}},
-    {0, XK_F4, spawn, {.v = volumeUp}},
-    {0, XK_F3, spawn, {.v = volumeDown}},
-    {0, XK_F6, spawn, {.v = volumeMute}},
-    {0, XK_F7, spawn, {.v = volumeUnMute}},
+    {0, XK_F4, spawn, {.v = brightDown}},
+    {0, XK_F5, spawn, {.v = brightUp}},
+    {0, XK_F3, spawn, {.v = volumeUp}},
+    {0, XK_F2, spawn, {.v = volumeDown}},
+    {MODKEY, XK_F1, spawn, {.v = volumeMute}},
+    {0, XK_F1, spawn, {.v = volumeUnMute}},
 };
 
 /* button definitions */
