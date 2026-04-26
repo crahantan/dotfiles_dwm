@@ -1,6 +1,7 @@
-window-decoration = false
+window-decoration = true 
 window-padding-balance = true
 background-opacity = 0.8
 background-blur = true
 font-family = "jetbrains mono nerd font
 gtk-tabs-location = bottom
+theme = Kanagawa Dragon
