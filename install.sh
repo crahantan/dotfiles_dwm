@@ -98,7 +98,8 @@ official_packages=(
 # Paquetes que están en AUR
 aur_packages=(
   xautolock
-  # Nuevos paquetes de AUR en el futuro
+	joshuto
+	paru
 )
 
 # --------------------------
