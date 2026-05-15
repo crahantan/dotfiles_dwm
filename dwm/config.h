@@ -173,7 +173,7 @@ static const Key keys[] = {
     {0, XK_F5, spawn, {.v = brightUp}},
     {0, XK_F3, spawn, {.v = volumeUp}},
     {0, XK_F2, spawn, {.v = volumeDown}},
-    {MODKEY, XK_F1, spawn, {.v = volumeMute}},
+    {0, XK_F1, spawn, {.v = volumeMute}},
     {0, XK_F1, spawn, {.v = volumeUnMute}},
 };
 
