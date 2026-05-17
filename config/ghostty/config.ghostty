@@ -4,4 +4,5 @@ background-opacity = 0.95
 background-blur = true
 font-size = 16
 font-family = "jetbrains mono nerd font
-gtk-tabs-location = bottom
+gtk-tabs-location = hidden 
+theme = Kanagawa Dragon
