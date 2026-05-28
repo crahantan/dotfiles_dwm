@@ -79,6 +79,8 @@ official_packages=(
   xorg-xinit xorg-xauth xf86-input-libinput
   xorg-xrdb xorg-xbacklight xorg-fonts-misc 
   ttf-dejavu ttf-liberation noto-fonts noto-fonts-emoji
+	pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber 
+	gst-plugin-pipewire lib32-pipewire
 
   # Librerías de desarrollo
   libx11 libxft libxinerama libxrandr libxext
@@ -91,7 +93,7 @@ official_packages=(
 
   # Utilidades
   feh nitrogen lxappearance pcmanfm dmenu unclutter maim slop xclip xsel redshift kitty
-  networkmanager alsa-utils volumeicon notification-daemon arandr scrot lxrandr spectacle
+  networkmanager alsa-utils volumeicon notification-daemon arandr scrot lxrandr xfce4-screenshooter 
 	ghostty ueberzugpp
 )
 
