@@ -78,7 +78,7 @@ official_packages=(
   xorg-xinit xorg-xauth xf86-input-libinput
   xorg-xrdb xorg-xbacklight xorg-fonts-misc 
   ttf-dejavu ttf-liberation noto-fonts noto-fonts-emoji
-	pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber 
+	pipewire pipewire-alsa pipewire-pulse wireplumber 
 	gst-plugin-pipewire lib32-pipewire
 
   # Librerías de desarrollo
@@ -99,7 +99,6 @@ official_packages=(
 # Paquetes que están en AUR
 aur_packages=(
   xautolock
-	nitrogen-git
 	paru
 	nvm
 )
