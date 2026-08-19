@@ -123,7 +123,7 @@ static const char *volumeMute[] = {"pamixer", "-m", NULL};
 static const char *volumeUnMute[] = {"pamixer", "-u", NULL};
 static const char *brightUp[] = {"brightnessctl", "set", "+10%", NULL};
 static const char *brightDown[] = {"brightnessctl", "set", "10%-", NULL};
-static const char *screenshoot[] = {"spectacle", "-r", NULL};
+static const char *screenshoot[] = {"xfce4-screenshooter", "-r", NULL};
 
 #include "../patches/dwm/shifttag.c"
 #include "../patches/dwm/shiftview.c"
