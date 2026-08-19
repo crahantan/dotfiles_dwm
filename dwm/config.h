@@ -6,7 +6,7 @@ static const unsigned int gappx = 10;   /* gaps between windows */
 static const unsigned int snap = 32;    /* snap pixel */
 static const int rmaster =
     1; /* 1 means master-area is initially on the right */
-static const int showbar = 1;           /* 0 means no bar */
+static const int showbar = 0;           /* 0 means no bar */
 static const int topbar = 0;            /* 0 means bottom bar */
 static const unsigned int stairpx = 10; /* depth of the stairs layout */
 static const int stairdirection = 0;    /* 0: left-aligned, 1: right-aligned */
@@ -121,7 +121,9 @@ static const char *volumeUp[] = {"pamixer",     "-i",  "5", "--allow-boost",
 static const char *volumeDown[] = {"pamixer", "-d", "5", NULL};
 static const char *volumeMute[] = {"pamixer", "-m", NULL};
 static const char *volumeUnMute[] = {"pamixer", "-u", NULL};
-static const char *screenshoot[] = {"xfce4-screenshooter", NULL};
+static const char *brightUp[] = {"brightnessctl", "set", "+10%", NULL};
+static const char *brightDown[] = {"brightnessctl", "set", "10%-", NULL};
+static const char *screenshoot[] = {"spectacle", "-r", NULL};
 
 #include "../patches/dwm/shifttag.c"
 #include "../patches/dwm/shiftview.c"
@@ -167,10 +169,12 @@ static const Key keys[] = {
     {MODKEY, XK_plus, setgaps, {.i = +1}},
     {MODKEY | ShiftMask, XK_equal, setgaps, {.i = 0}},
     {MODKEY | ShiftMask, XK_f, fullscreen, {0}},
-    {0, XK_F4, spawn, {.v = volumeUp}},
-    {0, XK_F3, spawn, {.v = volumeDown}},
-    {0, XK_F6, spawn, {.v = volumeMute}},
-    {0, XK_F7, spawn, {.v = volumeUnMute}},
+    {0, XK_F4, spawn, {.v = brightDown}},
+    {0, XK_F5, spawn, {.v = brightUp}},
+    {0, XK_F3, spawn, {.v = volumeUp}},
+    {0, XK_F2, spawn, {.v = volumeDown}},
+    {0, XK_F1, spawn, {.v = volumeMute}},
+    {0, XK_F1, spawn, {.v = volumeUnMute}},
 };
 
 /* button definitions */
